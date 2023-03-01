@@ -11,7 +11,7 @@ export default {
                   
                     <RouterLink :to="'/email/'+email.id">Details</RouterLink> |
                     <RouterLink :to="'/email/edit/'+email.id">Edit</RouterLink> |
-                    <button @click="showDetails(email.id)">Details</button>
+                    <!-- <button @click="showDetails(email.id)">Details</button> -->
                     <button @click="remove(email.id)">delet</button>
                 </li>
             </ul>
@@ -21,9 +21,9 @@ export default {
         remove(emailId) {
             this.$emit('remove', emailId)
         },
-        showDetails(emailId){
-            this.$router.push('/email/'+ emailId)
-        },
+        // showDetails(emailId){
+        //     this.$router.push('/email/'+ emailId)
+        // },
     },
     components: {
         EmailPreview: EmailPreview,

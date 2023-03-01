@@ -24,9 +24,9 @@ function query(filterBy = {}) {
                 const regex = new RegExp(filterBy.txt, 'i')
                 emails = emails.filter(email => regex.test(email.subject))
             }
-            // if (filterBy.status) {
-            //     emails = emails.filter(email => email.status >= filterBy.status)
-            // }
+            if (filterBy.status) {
+                emails = emails.filter(email => email.status >= filterBy.status)
+            }
             return emails
         })
 }

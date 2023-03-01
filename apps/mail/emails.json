@@ -1,0 +1,40 @@
+[
+  {
+    "id": "e101",
+    "subject": "miss you!",
+    "body": "mi est eros convallis auctor arcu dapibus himenaeos",
+    "isRead": false,
+    "sentAt": 1551133930594,
+    "removedAt": null,
+    "from": "momo@momo.com",
+    "to": "user@appsus.com"    
+  },
+  {
+    "id": "s1e01",
+    "subject": "good luck ",
+    "body": "milsdhklsh pibus himenaeos",
+    "isRead": false,
+    "sentAt": 887968,
+    "removedAt": null,
+    "from": "momo@momo.com",
+    "to": "user@appsus.com" 
+  },
+  {
+    "id": "s5501",
+    "subject": "not today",
+    "body": "milsdhklsh pibus himenaeos",
+    "isRead": false,
+    "sentAt": 8555  ,
+    "removedAt": null,
+    "from": "momo@momo.com",
+    "to": "user@appsus.com" 
+  }
+
+  
+
+
+
+
+
+
+]

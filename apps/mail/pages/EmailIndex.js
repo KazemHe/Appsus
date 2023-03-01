@@ -4,7 +4,7 @@ import EmailFilter from '../cmps/EmailFilter.js'
 import EmailList from '../cmps/EmailList.js'
 import { eventBusService } from '../services/event-bus.service.js'
 import EmailDetails from './EmailDetails.js'
-// import BookEdit from './BookEdit.js'
+// import EmailEdit from './EmailEdit.js'
 
 export default {
     template: `
@@ -18,17 +18,17 @@ export default {
                
                 @remove="removeEmail" 
                 />
-            <!-- <BookEdit @book-saved="onSaveBook"/> -->
-            <!-- <BookDetails 
-                v-if="selectedBook" 
-                @hide-details="selectedBook = null"
-                :book="selectedBook"/> -->
+            <!-- <EmailEdit @email-saved="onSaveEmail"/> -->
+            <!-- <EmailDetails 
+                v-if="selectedEmail" 
+                @hide-details="selectedEmail = null"
+                :email="selectedEmail"/> -->
         </section>
     `,
     data() {
         return {
             emails: null,
-            selectedEmail: null,
+            // selectedEmail: null,
             filterBy: {},
         }
     },
@@ -61,7 +61,9 @@ export default {
     },
     computed: {
         filteredEmails() {
-            const regex = new RegExp(this.filterBy.txt, 'i')
+            console.log(this.emails)
+            const regex = new RegExp(this.filterBy.subject, 'i')
+            console.log(this.filterBy.subject)
             return this.emails.filter(email => regex.test(email.subject))
         }
     },
@@ -77,6 +79,6 @@ export default {
         EmailFilter: EmailFilter,
         EmailList: EmailList,
         EmailDetails: EmailDetails,
-        // BookEdit: BookEdit,
+        // EmailEdit: EmailEdit,
     }
 }

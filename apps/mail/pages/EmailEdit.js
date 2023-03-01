@@ -4,20 +4,21 @@ import { eventBusService } from "../services/event-bus.service.js"
 
 export default {
     template: `
-        <section class="book-edit"> 
-        <h2>{{(email.id)? 'Edit' : 'Add'}} a email</h2>
+        <section class="email-edit"> 
+        <!-- <h2>{{(email.id)? 'Edit' : 'Add'}} a email</h2> -->
             <h2>sent a email</h2>
-            <form @submit.prevent="save">
+           <form @submit.prevent="save"> 
+        
                 <input type="text" v-model="email.subject" placeholder="subject">
                 <input type="text" v-model="email.body">
                 <!-- <input type="text" v-modal="email." -->
-                <button>sent</button>
+                <button>sent</button> 
             </form>
         </section>
     `,
     data() {
         return {
-            emailService: emailService.getEmptyEmail()
+            email: emailService.getEmptyEmail()
         }
     },
     created(){
@@ -30,8 +31,8 @@ export default {
     methods: {
         // sent() {
         //     emailService.save(this.email)
-        //         .then(savedBook => {
-        //             this.book = emailService.getEmptyEmail()
+        //         .then(savedEmail => {
+        //             this.email = emailService.getEmptyEmail()
         //             this.$emit('email-saved', savedEmail)
         //         })
         // },

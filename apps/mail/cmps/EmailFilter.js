@@ -1,9 +1,9 @@
 export default {
     template: `
-        <section class="book-filter">
+        <section class="email-filter">
             <input 
                 v-model="filterBy.subject"
-                @input="filter" 
+              
                 placeholder="Search"
                 type="text" />
             <!-- <input 
@@ -13,18 +13,34 @@ export default {
                 min="10" max="400"
                 type="range" /> -->
 
-
-
         </section>
     `,
     data() {
         return {
-            filterBy: { subject: '' },
+            filterBy: { subject: '',status : null },
         }
     },
     methods: {
         filter(){
             this.$emit('filter', this.filterBy)
         }
+    },
+
+
+
+    watch: {
+        filterBy: {
+            handler() {
+                console.log('filterBy changed', this.filterBy)
+                this.$emit('filter', this.filterBy)
+            },
+            deep: true
+        },
+        'filterBy.subject'() {
+            console.log('filterBy VENDOR changed', this.filterBy)
+            this.$emit('filter', this.filterBy)
+        },
     }
+
+
 }

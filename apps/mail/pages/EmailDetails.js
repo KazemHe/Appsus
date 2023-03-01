@@ -8,18 +8,23 @@ import reviewPreview from '../cmps/reviewPreview.js'
 export default {
     // props: ['bookId'],
     template: `
-        <section class="book-details" v-if="email">
+        <section class="email-details" v-if="email">
 
-            <!-- <nav> -->
-            <RouterLink :to="'/email/' + email.prevBookId">Previous email</RouterLink> |
-                <RouterLink :to="'/email/' + email.nextBookId">Next email</RouterLink>
-            <!-- </nav> -->
-        <RouterLink to="/email">Back to emails</RouterLink>
-            <h2>{{ email.subject }}</h2>
-            <h3>{{ email.body}}</span></h3>
+            <nav>
+                <button></button>
+                <button></button>
+                <button>save as a note</button>
+                <button>delete</button>
+            <!-- <RouterLink :to="'/email/' + email.prevBookId">Previous email</RouterLink> |
+                <RouterLink :to="'/email/' + email.nextBookId">Next email</RouterLink> -->
+                <RouterLink to="/email">back</RouterLink>
+            </nav>
+
+            <h1 class="subject">{{ email.subject }}</h1>
+            <h3 class="email-from">from :{{ email.from}}</h3>
+            <h3 class="email-comtent">{{ email.body}}</span></h3>
            
-            <h3>{{ email.from}}</h3>
-            <h3>{{ email.read }}</h3>
+            <!-- <h3>{{ email.read }}</h3> -->
 
 
 
