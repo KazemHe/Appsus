@@ -1,0 +1,53 @@
+import { emailService } from "../services/email.service.js"
+import { eventBusService } from "../services/event-bus.service.js"
+
+
+export default {
+    template: `
+        <section class="book-edit"> 
+        <h2>{{(email.id)? 'Edit' : 'Add'}} a email</h2>
+            <h2>sent a email</h2>
+            <form @submit.prevent="save">
+                <input type="text" v-model="email.subject" placeholder="subject">
+                <input type="text" v-model="email.body">
+                <!-- <input type="text" v-modal="email." -->
+                <button>sent</button>
+            </form>
+        </section>
+    `,
+    data() {
+        return {
+            emailService: emailService.getEmptyEmail()
+        }
+    },
+    created(){
+        const {emailId} = this.$route.params
+        if (emailId) {
+            emailService.get(emailId)
+                .then(email => this.email = email)
+        }
+    },
+    methods: {
+        // sent() {
+        //     emailService.save(this.email)
+        //         .then(savedBook => {
+        //             this.book = emailService.getEmptyEmail()
+        //             this.$emit('email-saved', savedEmail)
+        //         })
+        // },
+
+
+        save() {
+            emailService.save(this.email)
+                .then(savedEmail=> {
+                    console.log('email sent')
+                    eventBusService.emit('show-msg', { txt: 'email sent', type: 'success' })
+                    this.$router.push('/email')
+                })
+                .catch(err => {
+                    eventBusService.emit('show-msg', { txt: 'email sent failed', type: 'error' })
+                })
+
+        }
+    }
+}
