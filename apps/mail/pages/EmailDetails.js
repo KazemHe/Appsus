@@ -8,11 +8,14 @@ import reviewPreview from '../cmps/reviewPreview.js'
 export default {
     // props: ['bookId'],
     template: `
-        <section class="email-details" v-if="email">
+        <section  class="readClass" class="email-details" v-if="email">
 
             <nav>
                 <button></button>
-                <button></button>
+     
+                <h1 class="subject">{{ email.subject }}</h1>
+                <h3 class="email-from">from :{{ email.from}}</h3>
+                <h3 class="email-comtent">{{ email.body}}</span></h3>
                 <button>save as a note</button>
                 <button>delete</button>
             <!-- <RouterLink :to="'/email/' + email.prevBookId">Previous email</RouterLink> |
@@ -20,9 +23,6 @@ export default {
                 <RouterLink to="/email">back</RouterLink>
             </nav>
 
-            <h1 class="subject">{{ email.subject }}</h1>
-            <h3 class="email-from">from :{{ email.from}}</h3>
-            <h3 class="email-comtent">{{ email.body}}</span></h3>
            
             <!-- <h3>{{ email.read }}</h3> -->
 
@@ -87,7 +87,13 @@ export default {
         //     .then(book => this.book = book)
     },
     computed: {
+        readClass() {
+            return {
 
+                'unread': this.email.isRead === false,
+                'read': this.email.read === true,
+            }
+        },
         emailId() {
        
             return this.$route.params.emailId
@@ -106,8 +112,7 @@ export default {
 
  
 
-        // priceClass() {
-    // },
+    },
 
     watch: {
         emailId() {
@@ -124,4 +129,4 @@ export default {
     }
 
 }
-}
+

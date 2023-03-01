@@ -1,0 +1,36 @@
+.email-details {
+
+    display: grid;
+    padding: 10px;
+ 
+    align-content: space-evenly;
+    padding: 10px;
+
+}
+
+
+.email-details  {
+    /* width: 200px; */
+    justify-self: center;
+}
+
+.email-details button {
+    justify-self: end;
+}
+
+
+
+.read {
+background-color: rgb(56, 6, 6);
+    /* font-weight: bolder; */
+}
+
+
+.unread{
+
+    background-color: rgb(12, 38, 98);
+    cursor: pointer;
+    font-weight: bold;
+}
+
+
