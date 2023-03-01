@@ -12,10 +12,10 @@
 
 /* Components */
 
-@import 'cmps/AppHeader.css';
+/* @import 'cmps/EmailAppHeader.css'; */
 @import 'cmps/UserMsg.css';
 @import 'cmps/EmailIndex.css';
-@import 'cmps/AppFooter.css';
+/* @import 'cmps/EmailAppFooter.css'; */
 @import 'cmps/EmailFilter.css';
 @import 'cmps/EmailList.css';
 @import 'cmps/AddReview.css';

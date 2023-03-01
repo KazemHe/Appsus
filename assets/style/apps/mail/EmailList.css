@@ -1,0 +1,21 @@
+/* .email-list { */
+    /* background-color: bisque; */
+    /* display: grid; */
+    /* grid-template-columns: minmax(2em, 5em) 1fr minmax(2em, 5em); */
+/* } */
+
+
+/* .email-list>.email-from {
+    grid-column: 2/3; */
+/* } */
+
+/* 
+.email-list>.email-from {
+    grid-column: 2/3;
+} */
+
+
+/* .email-list>.email-comten {
+    grid-column: 1/2;
+} */ 
+

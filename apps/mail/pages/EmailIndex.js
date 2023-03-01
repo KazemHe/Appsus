@@ -9,8 +9,8 @@ import EmailDetails from './EmailDetails.js'
 export default {
     template: `
         <section class="email-index">
-
-        <RouterLink to="/email/edit">compose</RouterLink>
+            <RouterLink to="/email/edit">compose</RouterLink><br />
+           unread emails: {{this.unreadCount}}
             <EmailFilter @filter="setFilterBy"/>
             <EmailList 
             v-if="emails"
@@ -30,6 +30,7 @@ export default {
             emails: null,
             // selectedEmail: null,
             filterBy: {},
+            unread: 0,
         }
     },
     methods: {
@@ -47,7 +48,7 @@ export default {
         },
 
 
-
+        
         showEmailDetails(emailId) {
             this.selectedEmail = this.emails.find(email => email.id === emailId)
         },
@@ -63,9 +64,23 @@ export default {
         filteredEmails() {
             console.log(this.emails)
             const regex = new RegExp(this.filterBy.subject, 'i')
-            console.log(this.filterBy.subject)
+            console.log(this.ilterBy.subject)
             return this.emails.filter(email => regex.test(email.subject))
-        }
+        },
+        
+        unreadCount() {
+    
+        return   this.unread = this.emails.reduce((acc, email) => {
+
+            return acc + !email.isRead
+    
+        }, 0)
+
+     
+        },
+        
+
+
     },
     created() {
         emailService.query()

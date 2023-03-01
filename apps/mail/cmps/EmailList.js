@@ -3,10 +3,10 @@ import EmailPreview from './EmailPreview.js'
 export default {
     props:['emails'],
     template: `
-        <section class="email-list">
+        <section >
            <!-- <h1>list</h1> -->
             <ul>
-                <li v-for="email in emails" :key="email.id">
+                <li class="" v-for="email in emails" :key="email.id">
                     <EmailPreview :email="email"/>
                   
                     <RouterLink :to="'/email/'+email.id">Details</RouterLink> |
@@ -27,5 +27,15 @@ export default {
     },
     components: {
         EmailPreview: EmailPreview,
+    },
+
+    computed :{
+        readClass() {
+            return {
+
+                'unread': this.email.isRead === false,
+                'read': this.email.isRead === true,
+            }
     }
+}
 }

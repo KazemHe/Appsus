@@ -3,7 +3,7 @@
     "id": "e101",
     "subject": "miss you!",
     "body": "mi est eros convallis auctor arcu dapibus himenaeos",
-    "isRead": false,
+    "isRead": true,
     "sentAt": 1551133930594,
     "removedAt": null,
     "from": "momo@momo.com",
