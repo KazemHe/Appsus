@@ -1,6 +1,7 @@
 import HomePage from './views/HomePage.js'
 import AboutUs from './views/AboutUs.js'
 import NoteList from './apps/keep/cmps/NoteList.js'
+import EmailList from './apps/mail/cmps/EmailList.js'
 
 
 const { createRouter, createWebHashHistory } = VueRouter
