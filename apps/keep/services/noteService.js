@@ -142,7 +142,7 @@ function createNote(notes) {
         case 'NoteTxt':
             note =
             {
-                id: makeNoteId(),
+                id: getNextId(notes),
                 createdAt: 1112222,
                 type: 'NoteTxt',
                 isPinned: false,
@@ -158,7 +158,7 @@ function createNote(notes) {
         case 'NoteImg':
 
             note = {
-                id: makeNoteId(),
+                id: getNextId(notes),
                 type: 'NoteImg',
                 isPinned: false,
                 info: {
@@ -174,7 +174,7 @@ function createNote(notes) {
 
         case 'NoteTodos':
             note = {
-                id: makeNoteId(),
+                id: getNextId(notes),
                 type: 'NoteTodos',
                 isPinned: false,
                 info: {
@@ -191,9 +191,12 @@ function createNote(notes) {
 }
 
 
-function _makeNoteId(id) {
-    console.log(id);
-}
+function getNextId(notes) {
+    const ids = notes.map(note => note.id);
+    const lastId = ids[ids.length - 1];
+    const lastNum = Number(lastId.substr(1));
+    return `n${lastNum + 1}`;
+  }
 
 function pinNote (id){
     return get(id).then (note =>{

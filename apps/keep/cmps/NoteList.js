@@ -8,7 +8,6 @@ export default {
             <ul>
                 <li v-for="note in notes" :key="note.id">
                     <NotePreview :note="note"/>
-                  
                     <!-- <RouterLink :to="'/note/'+note.id">Details</RouterLink> |
                     <RouterLink :to="'/note/edit/'+note.id">Edit</RouterLink> | -->
                     <!-- <button @click="showDetails(book.id)">Details</button> -->

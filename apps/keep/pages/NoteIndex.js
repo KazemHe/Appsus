@@ -1,7 +1,7 @@
 import { noteService as noteService } from '../services/noteService.js'
 
 import NoteList from '../cmps/NoteList.js'
-
+// import { eventBusService } from '../../../services/event-bus.service.js'
 
 export default {
     template: `
@@ -10,7 +10,7 @@ export default {
             <NoteList v-if="notes"
             :notes="notes" 
             @remove="removeNote" 
-           / >
+           />
             <!-- <BookEdit @note-saved="onSaveBook"/> -->
             <!-- <BookDetails 
                 v-if="selectedBook" 
@@ -25,7 +25,6 @@ export default {
             notes: null,
             selectedBook: null,
             filteerdBy: null // filterBy: { price: 0 },
-
         }
     },
 
@@ -38,10 +37,8 @@ export default {
     },
 
     methods: {
-
         removeNote(noteId) {
             console.log(noteId);
-            
             noteService.remove(noteId)
                 .then(() => {
                     const idx = this.notes.findIndex(note => note.id === noteId)
