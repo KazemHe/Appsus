@@ -1,7 +1,9 @@
 import HomePage from './views/HomePage.js'
 import AboutUs from './views/AboutUs.js'
 
-import EmailList from './apps/mail/cmps/EmailList.js'
+import EmailDetails from './apps/mail/pages/EmailDetails.js'
+import EmailEdit from './apps/mail/pages/EmailEdit.js'
+import EmailIndex from './apps/mail/pages/EmailIndex.js'
 import NoteIndex from './apps/keep/pages/NoteIndex.js'
 
 
@@ -26,8 +28,17 @@ const routerOptions = {
 		},
 		{
 			path: '/email',
-			component: EmailList,
-		}
+			component: EmailIndex,
+		},
+		{
+            path: '/email/:emailId',
+            component: EmailDetails
+        },
+        {
+            path: '/email/edit/:emailId?',
+            component: EmailEdit
+        },
+	
 
 	],
 }
