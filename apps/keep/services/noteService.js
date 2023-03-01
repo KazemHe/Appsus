@@ -1,20 +1,20 @@
 'use strict'
 
-import { utilService } from '../../services/async-storage.service.js'
-import { storageService } from '../../services/util.service.js'
+import { storageService } from '../../../services/async-storage.service.js'
+import { utilService } from '../../../services/util.service.js'
 
 const NOTE_KEY = 'noteDB'
 
 _createNotes()
-_setNextPrevNoteId()
-_makeNoteId(id)
+// _setNextPrevNoteId()
+// _makeNoteId(id)
 
 export const noteService = {
     query,save, remove, get, createNote, pinNote, doubleNote, 
 
 
-    getEmptyBook: getEmptyBook,
-    addReview,
+    // getEmptyBook: getEmptyBook,
+    // addReview,
 
 }
 
@@ -123,17 +123,17 @@ function _createBook(title, amount = 120) {
 
 // }
 
-function _setNextPrevNoteId(note) {
-    return storageService.query(NOTE_KEY).then((notes) => {
-        const noteIdx = notes.findIndex((currNote) => currNote.id === note.id)
-        note.nextNoteId = notes[noteIdx + 1] ? notes[noteIdx + 1].id : notes[0].id
-        note.prevNoteId = notes[noteIdx - 1]
-            ? notes[noteIdx - 1].id
-            : notes[notes.length - 1].id
-        console.log('note in setnext ', note)
-        return note
-    })
-}
+// function _setNextPrevNoteId(note) {
+//     return storageService.query(NOTE_KEY).then((notes) => {
+//         const noteIdx = notes.findIndex((currNote) => currNote.id === note.id)
+//         note.nextNoteId = notes[noteIdx + 1] ? notes[noteIdx + 1].id : notes[0].id
+//         note.prevNoteId = notes[noteIdx - 1]
+//             ? notes[noteIdx - 1].id
+//             : notes[notes.length - 1].id
+//         console.log('note in setnext ', note)
+//         return note
+//     })
+// }
 
 
 function createNote(notes) {

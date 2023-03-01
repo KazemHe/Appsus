@@ -1,16 +1,10 @@
+
 export default {
-	template: `
-
-
-
-
-
-
-
-
-
-        <section class="home-page">
-            <h1>Home sweet sssshome</h1>
-        </section>
+    props: ['note'],
+    template: `
+        <article class="note-preview">
+            <h2>{{ note.id }}</h2>
+            <h2>{{ note.info.title }}</h2>
+        </article>
     `,
 }
