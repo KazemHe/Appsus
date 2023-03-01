@@ -1,16 +1,23 @@
 import { noteService as noteService } from '../services/noteService.js'
 
+
+import NoteFilter from '../cmps/NoteFilter.js'
 import NoteList from '../cmps/NoteList.js'
 // import { eventBusService } from '../../../services/event-bus.service.js'
 
 export default {
     template: `
-<section class="note-list">
-<!-- <NoteFilter @filter="setFilterBy"/> -->
+<section class="note-index">
+
+<NoteFilter @filter="setFilterBy"/>
+
             <NoteList v-if="notes"
-            :notes="notes" 
-            @remove="removeNote" 
-           />
+            :notes="filteredNotes" 
+            @remove="removeNote"
+            @edit="editTxt"
+            @pinUp="pinNote"/>
+
+          
             <!-- <BookEdit @note-saved="onSaveBook"/> -->
             <!-- <BookDetails 
                 v-if="selectedBook" 
@@ -24,7 +31,8 @@ export default {
         return {
             notes: null,
             selectedBook: null,
-            filteerdBy: null // filterBy: { price: 0 },
+            filterBy:{},
+            currId: ''
         }
     },
 
@@ -43,30 +51,59 @@ export default {
                 .then(() => {
                     const idx = this.notes.findIndex(note => note.id === noteId)
                     this.notes.splice(idx, 1)
-                    eventBusService.emit('show-msg', { txt: 'note removed', type: 'success' })
-                })
-                .catch(err => {
-                    eventBusService.emit('show-msg', { txt: 'note remove failed', type: 'error' })
+                //     eventBusService.emit('show-msg', { txt: 'note removed', type: 'success' })
+                // })
+                // .catch(err => {
+                //     eventBusService.emit('show-msg', { txt: 'note remove failed', type: 'error' })
                 })
         },
 
-        // setFilterBy(filterBy) {
-        //     console.log()
-        //     this.filterBy = filterBy
-        // }
+
+        editTxt(noteId) {
+           console.log(x);
+           
+         return  x = noteService.get(noteId)
+             
+          },
+
+
+
+        
+        setFilterBy(filterBy) {
+            
+            this.filterBy = filterBy
+            console.log(this.filterBy)
+        }
     },
 
     computed: {
-        // filteredNotes() {
-        //     const regex = new RegExp(this.filterBy.title, 'i')
-        //     return this.notes.filter(note => regex.test(note.title) && note.listPrice.amount >= this.filterBy.price)
-        // },
+        filteredNotes() {
+            console.log('hello', this.filterBy);
+            const regex = new RegExp(this.filterBy.type, 'i')
+            return this.notes.filter(note => regex.test(note.type) )// && note.listPrice.amount >= this.filterBy.price)
+        },
     },
+
+    data() {
+        return {
+          notes: null,
+          selectedBook: null,
+          filterBy: {},
+          currId: null
+        }
+      },
+      watch: {
+        currId(newValue, oldValue) {
+          console.log(`currId changed from ${oldValue} to ${newValue}`);
+          // Do something with the new value
+        }
+      },
+
 
 
     components: {
         NoteList: NoteList,
-    //    NoteFilter:NoteFilter,
+        NoteFilter: NoteFilter,
     }
 }
 

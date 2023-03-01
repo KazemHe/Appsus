@@ -10,13 +10,18 @@ _createNotes()
 // _makeNoteId(id)
 
 export const noteService = {
-    query,save, remove, get, createNote, pinNote, doubleNote, 
+    query,save, remove, get, createNote, pinNote, doubleNote, getNoteId
 
 
     // getEmptyBook: getEmptyBook,
     // addReview,
 
 }
+
+function getNoteId(noteId){
+    return storageService.query(NOTE_KEY)
+}
+
 
 function query() { //filterBy = {}
     return storageService.query(NOTE_KEY)
@@ -33,8 +38,10 @@ function query() { //filterBy = {}
 }
 
 function get(noteId) {
+    console.log(noteId);
+    console.log(storageService.get(NOTE_KEY, noteId));
     return storageService.get(NOTE_KEY, noteId)
-        .then(_setNextPrevNoteId)
+       
 }
 
 function remove(noteId) {
@@ -205,4 +212,8 @@ function pinNote (id){
 }
 
 function doubleNote() {}
+
+function changeTxt(id , noteTxt){
+    return get(id , noteTxt)
+}
 
