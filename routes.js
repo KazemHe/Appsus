@@ -19,7 +19,7 @@ const routerOptions = {
 		{
 			path: '/keep',
 			component: NoteList,
-		}
+		},
 		{
 			path: '/email',
 			component: EmailList,
