@@ -11,9 +11,9 @@ export default {
         
         <component :is="note.type" :note="note" /> 
         <input type="color" v-model="selectedColor" />
-                    <button @click="remove(note.id)">x</button>
-                    <button @click="pinUp(note)"> PIN ME UP</button>
-                    <button @click="edit(note.id)">edid</button>
+                    <button @click="remove(note.id)"><i class="fa-solid fa-trash"></i></button>
+                    <button @click="pinUp(note)"> <i class="fa-solid fa-thumbtack"></i></button>
+                    <button @click="edit(note.id)"><i class="fa-solid fa-pencil"></i></button>
         </article>
     `,
 

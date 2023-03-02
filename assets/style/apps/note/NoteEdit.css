@@ -1,11 +1,18 @@
 .note-edit{
+    position: relative;
     display: flex;
-    margin:15px;
+    margin-bottom:60px;
+    margin-top:  20px;
     justify-content: space-around;
     font-size: 25px;
 }
 
-.note-edit > input {
+.note-edit input {
+margin: 5px;
 
-   background-color:  red ;
+}
+
+.edit-color{
+    position: absolute;
+    
 }
