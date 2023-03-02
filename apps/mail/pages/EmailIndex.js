@@ -48,7 +48,7 @@ export default {
         },
 
 
-        
+
         showEmailDetails(emailId) {
             this.selectedEmail = this.emails.find(email => email.id === emailId)
         },
@@ -64,21 +64,21 @@ export default {
         filteredEmails() {
             console.log(this.emails)
             const regex = new RegExp(this.filterBy.subject, 'i')
-            console.log(this.ilterBy.subject)
+            console.log(this.filterBy.subject)
             return this.emails.filter(email => regex.test(email.subject))
         },
-        
+
         unreadCount() {
-    
-        return   this.unread = this.emails.reduce((acc, email) => {
+            if (!this.emails) return
+            return this.unread = this.emails.reduce((acc, email) => {
 
-            return acc + !email.isRead
-    
-        }, 0)
+                return acc + !email.isRead
 
-     
+            }, 0)
+
+
         },
-        
+
 
 
     },
