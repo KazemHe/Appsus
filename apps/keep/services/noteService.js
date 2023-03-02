@@ -23,9 +23,19 @@ function getNoteId(noteId){
 }
 
 
-function query() { //filterBy = {}
+function query(filterBy = {}) { 
     return storageService.query(NOTE_KEY)
-    // .then(books => {
+    .then(notes => {
+        const regexType = new RegExp(filterBy.type, 'i')
+        const regex = new RegExp(filterBy.txt, 'i')
+        return notes.filter(note => {
+            return (regex.test(note.info.txt) || regex.test(note.info.title))
+            && regexType.test(note.type)
+        })
+    })
+}
+
+   // .then(books => {
     //     if (filterBy.txt) {
     //         const regex = new RegExp(filterBy.txt, 'i')
     //         books = books.filter(book => regex.test(book.title))
@@ -35,7 +45,8 @@ function query() { //filterBy = {}
     //     }
     //     return books
     // })
-}
+
+
 
 function get(noteId) {
     console.log(noteId);

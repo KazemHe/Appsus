@@ -15,7 +15,7 @@ export default {
             :notes="filteredNotes" 
             @remove="removeNote"
             @edit="editTxt"
-            @pinUp="pinNote"/>
+          />
 
           
             <!-- <BookEdit @note-saved="onSaveBook"/> -->
@@ -30,9 +30,9 @@ export default {
     data() {
         return {
             notes: null,
-            selectedBook: null,
+
             filterBy:{},
-            currId: ''
+            currNote: ''
         }
     },
 
@@ -59,10 +59,12 @@ export default {
         },
 
 
-        editTxt(noteId) {
-           console.log(x);
-           
-         return  x = noteService.get(noteId)
+        editTxt(noteId) { 
+         return noteService.get(noteId)
+         .then(note => {
+            console.log(note.info.txt);
+            this.currNote = note
+         })
              
           },
 
@@ -70,7 +72,6 @@ export default {
 
         
         setFilterBy(filterBy) {
-            
             this.filterBy = filterBy
             console.log(this.filterBy)
         }
@@ -80,7 +81,7 @@ export default {
         filteredNotes() {
             console.log('hello', this.filterBy);
             const regex = new RegExp(this.filterBy.type, 'i')
-            return this.notes.filter(note => regex.test(note.type) )// && note.listPrice.amount >= this.filterBy.price)
+            return this.notes.filter(note => regex.test(note.type))// note. )
         },
     },
 
@@ -94,7 +95,7 @@ export default {
       },
       watch: {
         currId(newValue, oldValue) {
-          console.log(`currId changed from ${oldValue} to ${newValue}`);
+          console.log(`currId changed from ${currNote} to ${currNote}`);
           // Do something with the new value
         }
       },
