@@ -116,8 +116,8 @@ export default {
 
     watch: {
         emailId() {
-            console.log('BookId Changed!')
-            this.loadBook()
+            console.log('emailId Changed!')
+            this.loadEmail()
         },
 
 

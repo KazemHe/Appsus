@@ -1,8 +1,8 @@
-/* .email-list { */
-    /* background-color: bisque; */
-    /* display: grid; */
-    /* grid-template-columns: minmax(2em, 5em) 1fr minmax(2em, 5em); */
-/* } */
+/* .email-list {
+    background-color: bisque;
+    display: grid;
+    grid-template-columns: minmax(2em, 5em) 1fr minmax(2em, 5em);
+} */
 
 
 /* .email-list>.email-from {
