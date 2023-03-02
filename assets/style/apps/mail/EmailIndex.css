@@ -1,6 +1,32 @@
-/* .email-index{
-    background-color: aqua;
+.email-index{
+    /* background-color: aqua; */
     display: grid;
-} */
+    grid-template-columns: 20em 1fr;
+    background-color: lightcyan;
+    font-family: Arial, Helvetica, sans-serif;
+
+}
 
 
+.email-index > .side-bar{
+    grid-column: 1/2;
+    grid-row: 2/-3;
+}
+
+.side-bar{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: space-evenly; */
+    gap: 2em;
+    /* border: 1px solid black; */
+
+}
+
+
+.compose{
+
+border: .2px solid rgb(0, 15, 15);
+border-radius: 22em;
+}

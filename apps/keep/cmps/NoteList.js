@@ -11,10 +11,7 @@ export default {
                     <!-- <RouterLink :to="'/note/'+note.id">Details</RouterLink> |
                     <RouterLink :to="'/note/edit/'+note.id">Edit</RouterLink> | -->
                     <!-- <button @click="showDetails(book.id)">Details</button> -->
-                    <input type="color" v-model="selectedColor" />
-                    <button @click="remove(note.id)">x</button>
-                    <button @click="pinUp(note)"> PIN ME UP</button>
-                    <button @click="edit(note.id)">edid</button>
+                   
                 </li>
             </ul>
         </section>

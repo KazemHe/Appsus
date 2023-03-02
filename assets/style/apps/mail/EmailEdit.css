@@ -9,3 +9,8 @@
 .email-edit form button {
     justify-self: end;
 }
+
+
+.compose{
+    background-color: black;
+}
