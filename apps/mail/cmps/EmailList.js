@@ -1,4 +1,6 @@
 import EmailPreview from './EmailPreview.js'
+import { emailService } from "../services/email.service.js"
+
 
 export default {
     props:['emails'],
@@ -29,7 +31,15 @@ export default {
     //     //     this.$router.push('/email/'+ emailId)
     //     // }
       moveToDetails(email){
+          
+          console.log(email.isRead)
+        //   if(!email.isRead){
+        //       email.isRead =true
+        //       emailService.save(this.email)
+        //     } 
             this.$router.push('/email/'+email.id)
+              console.log(email.isRead)
+           
         },
     //     moveToEdit(email){
     //         this.$router.push('/email/edit/'+email.id)

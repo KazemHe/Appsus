@@ -14,10 +14,10 @@ export default {
             <p class="email-body">{{ email.body }}</p>
 </div>
             <!-- <RouterLink :to.stop="'/email/edit/'+email.id"><i aria-hidden="true" title="Edit a Message" class="fa fa-pencil"></i></RouterLink> -->
-            
             <!-- <button @click="showDetails(email.id)">Details</button> -->
             <!-- <button @click="remove(email.id)">delet</button> -->
             <div class="icons">
+                <span>{{email.sentAt}}</span>
             <i @click.stop="moveToEdit(email)" aria-hidden="true" title="Edit a Message" class="fa fa-pencil"></i>
                     <i aria-hidden="true" title="delete a message" class="fa fa-trash" @click.stop="remove(email.id)" ></i>
                     <i  class="fa fa-envelope-open"></i> 
@@ -50,8 +50,8 @@ export default {
 
             return {
 
-                'read': this.email.isRead,
-                'unread': this.email.iRead,
+                'unread': this.email.isRead ,
+                'read': !this.email.isRead,
             }
 
         }
