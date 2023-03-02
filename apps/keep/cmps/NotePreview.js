@@ -8,9 +8,8 @@ export default {
     
         <article class="note-preview">
         <div :style="{ backgroundColor: selectedColor }">
-    <input type="color" v-model="selectedColor" />
-    
-    <component :is="note.type" :note="note"/>   
+        <input type="color" v-model="selectedColor" />
+        <component :is="note.type" :note="note" />   
     </div>
         </article>
     `,
@@ -22,7 +21,7 @@ export default {
     },
     components: {
         NoteImg,
-        NoteTxt, 
+        NoteTxt,
         NoteTodos
     }
 }

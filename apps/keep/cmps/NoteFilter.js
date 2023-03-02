@@ -7,7 +7,6 @@ export default {
                 placeholder="Search"
                 type="text" />
 
-
                 <select v-model="filterBy.type" @input="filter">
                   <option value="">All</option>
                   <option value="NoteTxt">Text</option>
@@ -15,6 +14,7 @@ export default {
                   <option value="NoteVideo">Vid</option>
                   <option value="NoteTodos">Todo</option>
                 </select>
+                
         </section>
     `,
     data() {
