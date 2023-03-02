@@ -10,6 +10,40 @@ background-color: black;
 
 }
 
+.email-container{
+    cursor: pointer;
+display: grid;
+grid-template-columns: minmax(1em , 10em) 1fr 5em;
+border-bottom: 1px solid black;
+gap: 1em;
+align-items: center;
+}
+
+.email-list :hover{
+
+    background-color: lightgray;
+}
+
+
+
+
+.email-container .icons{
+    justify-content: space-between;
+        grid-column:-2 / -1;
+}
+.email-container .email-body{
+
+    grid-column:-3/-2;
+}
+.email-container .fromto{
+
+    grid-column: -3/-4;
+}
+
+
+
+
+
 
 .email-details  {
     /* width: 200px; */
@@ -22,23 +56,15 @@ background-color: black;
 
 
 
-.read {
-background-color: rgb(56, 6, 6);
-    /* font-weight: bolder; */
-}
+.read { 
+ background-color:lightcyan;
+     font-weight: bolder; 
+ }
 
 
 .unread{
 
-    background-color: rgb(12, 38, 98);
+    background-color:  hwb(0 97% 0%);
     cursor: pointer;
     font-weight: bold;
-}
-
-
-.email-container{
-
-display: grid;
-
-
 }

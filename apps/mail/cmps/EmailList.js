@@ -5,7 +5,7 @@ export default {
     template: `
         <section >
            <!-- <h1>list</h1> -->
-            <ul :class ="readClass">
+            <ul>
                 <li  class="email-list" v-for="email in emails" :key="email.id" @click.stop="moveToDetails(email)">
                     <!-- <RouterLink :to="'/email/'+email.id">Details</RouterLink>  -->
                     <EmailPreview :email="email"/>

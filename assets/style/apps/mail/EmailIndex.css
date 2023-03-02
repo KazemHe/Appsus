@@ -2,7 +2,7 @@
     /* background-color: aqua; */
     display: grid;
     grid-template-columns: 20em 1fr;
-    background-color: lightcyan;
+    background-color: hwb(0 97% 0%);
     font-family: Arial, Helvetica, sans-serif;
 
 }
