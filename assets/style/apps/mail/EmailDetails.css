@@ -1,5 +1,7 @@
 .email-details {
 
+background-color: black;
+
     display: grid;
     padding: 10px;
  
@@ -34,3 +36,9 @@ background-color: rgb(56, 6, 6);
 }
 
 
+.email-container{
+
+display: grid;
+
+
+}

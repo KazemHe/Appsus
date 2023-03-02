@@ -21,3 +21,12 @@
 /* keep */
 @import 'apps/note/NoteIndex.css';
 @import 'apps/note/NoteList.css';
+
+
+/*email*/
+
+@import '/assets/style/apps/mail/EmailDetails.css';
+
+
+
+ 

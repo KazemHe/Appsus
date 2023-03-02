@@ -20,7 +20,7 @@ export default {
                 <button>delete</button>
             <!-- <RouterLink :to="'/email/' + email.prevBookId">Previous email</RouterLink> |
                 <RouterLink :to="'/email/' + email.nextBookId">Next email</RouterLink> -->
-                <RouterLink to="/email">back</RouterLink>
+                <RouterLink  to="/email">back</RouterLink>
             </nav>
 
            
@@ -63,6 +63,7 @@ export default {
         },
         loadEmail() {
             console.log(this.emailId)
+            if (!this.emailId) return
             emailService.get(this.emailId)
                 .then(email => this.email = email)
         },
