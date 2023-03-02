@@ -6,7 +6,7 @@ export default {
         <section class="note-list">
            <!-- <h1>list</h1> -->
             <ul>
-                <li v-for="note in notes" :key="note.id">
+                <li class="" v-for="note in notes" :key="note.id">
                     <NotePreview :note="note"/>
                     <!-- <RouterLink :to="'/note/'+note.id">Details</RouterLink> |
                     <RouterLink :to="'/note/edit/'+note.id">Edit</RouterLink> | -->

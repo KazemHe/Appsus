@@ -8,7 +8,7 @@ import reviewPreview from '../cmps/reviewPreview.js'
 export default {
     // props: ['bookId'],
     template: `
-        <section  class="readClass" class="email-details" v-if="email">
+        <section  :class="readClass" class="email-details" v-if="email">
 
             <nav>
                 <button></button>
