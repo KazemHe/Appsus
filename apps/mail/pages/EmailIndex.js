@@ -10,19 +10,22 @@ export default {
     template: `
         <section class="email-index">
             <RouterLink to="/email/edit">compose</RouterLink><br />
-           unread emails: {{this.unreadCount}}
+            unread emails: {{this.unreadCount}}
+            <i class="fa-solid fa-trash">trash</i>
+            <i class="fa-solid fa-inbox">inbox{{this.unreadCount}}</i>
+            <i class="fa-solid fa-paper-plane">sent</i>
             <EmailFilter @filter="setFilterBy"/>
             <EmailList 
             v-if="emails"
-                :emails="filteredEmails" 
-               
-                @remove="removeEmail" 
-                />
+            :emails="filteredEmails" 
+            
+            @remove="removeEmail" 
+            />
             <!-- <EmailEdit @email-saved="onSaveEmail"/> -->
             <!-- <EmailDetails 
-                v-if="selectedEmail" 
-                @hide-details="selectedEmail = null"
-                :email="selectedEmail"/> -->
+            v-if="selectedEmail" 
+            @hide-details="selectedEmail = null"
+            :email="selectedEmail"/> -->
         </section>
     `,
     data() {
