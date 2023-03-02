@@ -1,24 +1,19 @@
 import NoteImg from "./NoteImg.js"
 import NoteTodos from "./NoteTodos.js"
 import NoteTxt from "./NoteTxt.js"
+// type:note-txt
 
 export default {
     props: ['note'],
     template: `
     
-        <article class="note-preview">
-        <div :style="{ backgroundColor: selectedColor }">
-        <input type="color" v-model="selectedColor" />
-        <component :is="note.type" :note="note" />   
-    </div>
+        <article class="note-preview" >
+       
+       
+        <component :is="note.type" :note="note" /> 
         </article>
     `,
 
-    data() {
-        return {
-            selectedColor: "#ffffff"
-        }
-    },
     components: {
         NoteImg,
         NoteTxt,

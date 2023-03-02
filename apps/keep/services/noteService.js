@@ -10,7 +10,7 @@ _createNotes()
 // _makeNoteId(id)
 
 export const noteService = {
-    query,save, remove, get, createNote, pinNote, doubleNote, getNoteId
+    query,save, remove, get, createNote, pinNote, doubleNote, getNoteId, getEmptyNote
 
 
     // getEmptyBook: getEmptyBook,
@@ -60,15 +60,27 @@ function remove(noteId) {
 }
 
 function save(note) {
-    if (note.id) return storageService.put(NOTE_KEY, book)
+    if (note.id) return storageService.put(NOTE_KEY, note)
     else return storageService.post(NOTE_KEY, note)
 }
 
-function getEmptyBook() {
-    return { id: '', title: '', listPrice: { amount: 0 } }
+
+
+function getEmptyNote() {
+ return  {
+        id: 'n104',
+        createdAt: 1112222,
+        type: 'NoteTxt',
+        isPinned: false,
+        style: {
+            backgroundColor: '#00d'
+        },
+        info: {
+            txt: ''
+        }
+    }
+
 }
-
-
 
 function _createNotes() {
     let notes = utilService.loadFromStorage(NOTE_KEY)
@@ -117,11 +129,11 @@ function _createNotes() {
     return notes
 }
 
-function _createBook(title, amount = 120) {
-    const book = getEmptyBook(title, amount)
-    book.id = utilService.makeId()
-    return book
-}
+// function _createBook(title, amount = 120) {
+//     const book = getEmptyBook(title, amount)
+//     book.id = utilService.makeId()
+//     return book
+// }
 
 
 // function addReview(bookId, review) {

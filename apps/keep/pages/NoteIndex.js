@@ -1,6 +1,6 @@
 import { noteService as noteService } from '../services/noteService.js'
 
-
+import NoteEdit from '../cmps/NoteEdit.js'
 import NoteFilter from '../cmps/NoteFilter.js'
 import NoteList from '../cmps/NoteList.js'
 // import { eventBusService } from '../../../services/event-bus.service.js'
@@ -8,6 +8,7 @@ import NoteList from '../cmps/NoteList.js'
 export default {
     template: `
 <section class="note-index">
+<NoteEdit />
 
 <NoteFilter @filter="setFilterBy"/>
 
@@ -45,6 +46,13 @@ export default {
     },
 
     methods: {
+
+        onAddNote(newNote){
+
+
+        },
+
+
         removeNote(noteId) {
             console.log(noteId);
             noteService.remove(noteId)
@@ -105,6 +113,7 @@ export default {
     components: {
         NoteList: NoteList,
         NoteFilter: NoteFilter,
+        NoteEdit
     }
 }
 
