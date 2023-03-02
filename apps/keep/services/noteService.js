@@ -67,9 +67,10 @@ function save(note) {
 
 
 function getEmptyNote() {
- return  {
-        id: 'n104',
-        createdAt: 1112222,
+
+ const note = {
+        id: '',
+        createdAt: Date.now(),
         type: 'NoteTxt',
         isPinned: false,
         style: {
@@ -78,8 +79,9 @@ function getEmptyNote() {
         info: {
             txt: ''
         }
+        
     }
-
+    return note
 }
 
 function _createNotes() {

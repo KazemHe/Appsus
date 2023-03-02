@@ -6,14 +6,14 @@ export default {
         <section class="note-list">
            <!-- <h1>list</h1> -->
             <ul>
-                <li class="" v-for="note in notes" :key="note.id" :style="chnageStyle(note)" >
+                <li class="card-note" v-for="note in notes" :key="note.id" :style="changeStyle(note)" >
                     <NotePreview :note="note"/>
                     <!-- <RouterLink :to="'/note/'+note.id">Details</RouterLink> |
                     <RouterLink :to="'/note/edit/'+note.id">Edit</RouterLink> | -->
                     <!-- <button @click="showDetails(book.id)">Details</button> -->
                     <input type="color" v-model="selectedColor" />
                     <button @click="remove(note.id)">x</button>
-                    <button @click="pinUp(note.id)"> PIN ME UP</button>
+                    <button @click="pinUp(note)"> PIN ME UP</button>
                     <button @click="edit(note.id)">edid</button>
                 </li>
             </ul>
@@ -39,7 +39,7 @@ data() {
             this.$emit('edit', noteId)
         },
 
-        chnageStyle(note){
+        changeStyle(note){
 
         }
 

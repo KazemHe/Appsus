@@ -9,7 +9,6 @@ export default {
     
         <article class="note-preview" >
        
-       
         <component :is="note.type" :note="note" /> 
         </article>
     `,

@@ -1,0 +1,11 @@
+.note-edit{
+    display: flex;
+    margin:15px;
+    justify-content: space-around;
+    font-size: 25px;
+}
+
+.note-edit > input {
+
+   background-color:  red ;
+}

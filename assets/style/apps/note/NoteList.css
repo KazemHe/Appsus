@@ -1,17 +1,18 @@
 .note-list ul {
     columns: auto 10em;
     list-style-type: none;
-
-    
+    break-inside: avoid-page;
+   
 }
 .note-list ul li{
     padding: 10px;
+    break-inside: avoid-page;
 }
 
 .note-list li{
     padding: 10px;
     border: 1px solid black;
     border-radius: .5rem;
-    background-color: lightgray;
+  
 }
     
