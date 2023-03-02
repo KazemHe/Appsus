@@ -10,7 +10,7 @@ _createNotes()
 // _makeNoteId(id)
 
 export const noteService = {
-    query,save, remove, get, createNote, pinNote, doubleNote, 
+    query,save, remove, get, createNote, pinNote, doubleNote, getNoteId
 
 
     // getEmptyBook: getEmptyBook,
@@ -18,9 +18,24 @@ export const noteService = {
 
 }
 
-function query() { //filterBy = {}
+function getNoteId(noteId){
     return storageService.query(NOTE_KEY)
-    // .then(books => {
+}
+
+
+function query(filterBy = {}) { 
+    return storageService.query(NOTE_KEY)
+    .then(notes => {
+        const regexType = new RegExp(filterBy.type, 'i')
+        const regex = new RegExp(filterBy.txt, 'i')
+        return notes.filter(note => {
+            return (regex.test(note.info.txt) || regex.test(note.info.title))
+            && regexType.test(note.type)
+        })
+    })
+}
+
+   // .then(books => {
     //     if (filterBy.txt) {
     //         const regex = new RegExp(filterBy.txt, 'i')
     //         books = books.filter(book => regex.test(book.title))
@@ -30,11 +45,14 @@ function query() { //filterBy = {}
     //     }
     //     return books
     // })
-}
+
+
 
 function get(noteId) {
+    console.log(noteId);
+    console.log(storageService.get(NOTE_KEY, noteId));
     return storageService.get(NOTE_KEY, noteId)
-        .then(_setNextPrevNoteId)
+       
 }
 
 function remove(noteId) {
@@ -205,4 +223,8 @@ function pinNote (id){
 }
 
 function doubleNote() {}
+
+function changeTxt(id , noteTxt){
+    return get(id , noteTxt)
+}
 
