@@ -1,5 +1,4 @@
 .note-edit{
-   
     display: flex;
     margin-bottom:60px;
     margin-top:  20px;
@@ -12,3 +11,17 @@ margin: 5px;
 
 }
 
+.edit-texts > * {
+padding: 10px;
+
+
+}
+
+.v-button{
+    border: none;
+    background-color: white;
+} 
+
+.v-button:hover{
+    color: lightblue;
+}

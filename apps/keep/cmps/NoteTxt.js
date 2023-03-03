@@ -5,6 +5,7 @@ export default {
         <div>TXT</div>
         <h2>{{ note.id }}</h2>
         <h2>{{ note.info.title }}</h2>
+        <h2>{{ note.info.txt }}</h2>
         </section>
     `,
     data() {

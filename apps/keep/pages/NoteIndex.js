@@ -11,19 +11,10 @@
     <NoteEdit @save="save" />
 
     <NoteFilter @filter="setFilterBy"/>
-
-                <NoteList v-if="notes"
-                :notes="filteredNotes" 
-                @remove="removeNote" 
-                @changeColor="setChangeColor"
-                    @changePinMode="changePinMode" 
-                    @duplicate="duplicateNote"
-            
-                />
-
-                <!-- <NoteList
+    
+                <NoteList
                     :notes="getPinned"
-                    v-if="notes && getPinned"
+                    v-if="notes && getPinned "
                     @remove="removeNote"
                     @changeColor="setChangeColor"
                     @changePinMode="changePinMode" 
@@ -36,16 +27,7 @@
                     @changeColor="setChangeColor"
                     @changePinMode="changePinMode" 
                     @duplicate="duplicateNote"
-                /> -->
-
-                
-
-            <!-- <NoteList v-if="onEdit" /> -->
-                <!-- <BookEdit @note-saved="onSaveBook"/> -->
-                <!-- <BookDetails 
-                    v-if="selectedBook" 
-                    @hide-details="selectedBook = null"
-                    :note="selectedBook"/> -->
+                />
             </section>
 
         `,
@@ -68,13 +50,10 @@
         },
 
         methods: {
-
-            setChangeColor(color,) {
+            setChangeColor(color) {
                 console.log(color);
 
             },
-
-            
 
             removeNote(noteId) {
                 console.log(noteId);
@@ -89,18 +68,27 @@
                     })
             },
 
+            // duplicateNote(note) {
+            //     console.log(this.notes)
+            //     const copy = { ...note }
+            //     copy.id = makeId()
+            //     this.notes.unshift(copy)
+             
+                
+               
+            // },
+
             duplicateNote(note) {
-                const copy = { ...note };
-                copy.id = this.notes.length + 1;
-                this.notes.unshift(copy);
+                const copy = { ...note }
+                copy.id =''
+                noteService.save(copy).then(copy => {
+                   this.notes.push(copy)
+                });
             },
-
-
+            
             changePinMode(note) {
                 note.isPinned = !note.isPinned
                 noteService.save(note)
-
-
             },
 
             save(note) {
@@ -113,26 +101,28 @@
         },
 
         computed: {
-            filteredNotes() {
-                const regex = new RegExp(this.filterBy.type, 'i')
-                return this.notes.filter(note => regex.test(note.type))// note. )
-            },
-
 
             getPinned() {
-                return this.notes.filter(note => note.isPinned)
+                const pinnedNotes = this.notes.filter(note => note.isPinned)
+                const titleRegex = new RegExp(this.filterBy.search, 'i')
+                const typeRegex = new RegExp(this.filterBy.type, 'i')
+                return pinnedNotes.filter(note => /*titleRegex.test(note.info.title) &&*/ typeRegex.test(note.type))
+              },
+              getUnPinned() {
+                const unpinnedNotes = this.notes.filter(note => !note.isPinned)
+                const titleRegex = new RegExp(this.filterBy.search, 'i')
+                const typeRegex = new RegExp(this.filterBy.type, 'i')
+                return unpinnedNotes.filter(note => /*titleRegex.test(note.info.title) &&*/ typeRegex.test(note.type))
+              },
             },
-            getUnPinned() {
-                return this.notes.filter(note => !note.isPinned)
-            },
-
-        },
+            
 
         components: {
-            NoteList: NoteList,
-            NoteFilter: NoteFilter,
+            NoteList,
+            NoteFilter,
             NoteEdit
         }
     }
 
-
+  
+ 
