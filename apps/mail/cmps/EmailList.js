@@ -1,11 +1,13 @@
 import EmailPreview from './EmailPreview.js'
+import { emailService } from "../services/email.service.js"
+
 
 export default {
     props:['emails'],
     template: `
         <section >
            <!-- <h1>list</h1> -->
-            <ul :class ="readClass">
+            <ul>
                 <li  class="email-list" v-for="email in emails" :key="email.id" @click.stop="moveToDetails(email)">
                     <!-- <RouterLink :to="'/email/'+email.id">Details</RouterLink>  -->
                     <EmailPreview :email="email"/>
@@ -29,7 +31,15 @@ export default {
     //     //     this.$router.push('/email/'+ emailId)
     //     // }
       moveToDetails(email){
+          
+          console.log(email.isRead)
+        //   if(!email.isRead){
+        //       email.isRead =true
+        //       emailService.save(this.email)
+        //     } 
             this.$router.push('/email/'+email.id)
+              console.log(email.isRead)
+           
         },
     //     moveToEdit(email){
     //         this.$router.push('/email/edit/'+email.id)

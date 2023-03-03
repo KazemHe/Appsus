@@ -9,15 +9,15 @@ import EmailDetails from './EmailDetails.js'
 export default {
     template: `
         <section class="email-index">
-<nav class="side-bar">
-
-<RouterLink class="compose" to="/email/edit"><i class="fa-regular fa-pen-to-square"></i> compose</RouterLink>
-
-    <i class="fa-solid fa-inbox">inbox{{this.unreadCount}}</i>
-    <!-- unread emails: {{this.unreadCount}} -->    
-    <i class="fa-solid fa-trash">trash</i>
-    <i class="fa-solid fa-paper-plane">sent</i>
-</nav>
+            <nav class="side-bar">
+                
+                <RouterLink class="compose" to="/email/edit"><i class="fa-regular fa-pen-to-square"></i> compose</RouterLink>
+                <i class="fa-solid fa-inbox">  index  {{this.unreadCount}}</i>
+                <!-- unread emails: {{this.unreadCount}} -->    
+                <i class="fa-solid fa-trash" ><span>trash</span></i>
+                <i class="fa-solid fa-paper-plane"></i>
+            </nav>
+       
 
             <EmailFilter @filter="setFilterBy"/>
             <EmailList 
