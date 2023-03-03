@@ -11,11 +11,13 @@ export default {
         <section class="email-index">
             <nav class="side-bar">
                 
+
+
                 <RouterLink class="compose" to="/email/edit"><i class="fa-regular fa-pen-to-square"></i> compose</RouterLink>
-                <i class="fa-solid fa-inbox">  index  {{this.unreadCount}}</i>
+      <i class="fa-solid fa-inbox" @click="filterBy.status = 'inbox'"><h2>index {{this.unreadCount}}</h2> </i> 
                 <!-- unread emails: {{this.unreadCount}} -->    
-                <i class="fa-solid fa-trash" ><span>trash</span></i>
-                <i class="fa-solid fa-paper-plane"></i>
+               <i class="fa-solid fa-trash"  @click="filterBy.status = 'trash'"><span>trash</span></i>
+               <i class="fa-solid fa-paper-plane "  @click="filterBy.status = 'sent'" ></i>sent
             </nav>
        
 
@@ -37,7 +39,7 @@ export default {
         return {
             emails: null,
             // selectedEmail: null,
-            filterBy: {},
+            filterBy: {subject:'', status:'' },
             unread: 0,
         }
     },
@@ -72,8 +74,10 @@ export default {
         filteredEmails() {
             console.log(this.emails)
             const regex = new RegExp(this.filterBy.subject, 'i')
+            const statusReg = new RegExp(this.filterBy.status, 'i')
             console.log(this.filterBy.subject)
-            return this.emails.filter(email => regex.test(email.subject))
+
+            return this.emails.filter(email => regex.test(email.subject) && statusReg.test(email.status))
         },
 
         unreadCount() {

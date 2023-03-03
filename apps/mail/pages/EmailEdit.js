@@ -9,10 +9,12 @@ export default {
             <h2>sent a email</h2>
            <form @submit.prevent="save"> 
         
-                <input type="text" v-model="email.subject" placeholder="search">
-                <input type="text" v-model="email.body">
+               <input type="text" v-model="email.name" placeholder="to name :">
+               <input type="text" v-model="email.to" placeholder="to email :">
+                <input type="text" v-model="email.subject" placeholder="subject">
+                <input type="text" v-model="email.body" placeholder="enter your next" >
                 <!-- <input type="text" v-modal="email." -->
-                <button>sent</button> 
+                <button>send</button> 
             </form>
         </section>
     `,

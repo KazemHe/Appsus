@@ -18,7 +18,7 @@ export default {
     `,
     data() {
         return {
-            filterBy: { subject: '',status : null },
+            filterBy: { subject: '',status : 'inbox' },
         }
     },
     methods: {

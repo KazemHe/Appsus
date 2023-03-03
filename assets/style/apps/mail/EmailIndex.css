@@ -1,22 +1,22 @@
 .email-index{
     /* background-color: aqua; */
     display: grid;
-    grid-template-columns: 20em 1fr;
+    grid-template-columns: auto 1fr;
     background-color: white;
     font-family: Arial, Helvetica, sans-serif;
     
-
+    padding: 14px 20px;
 }
 
 
 .email-index > .side-bar{
-    grid-column: 1/2;
+    grid-column: 0/1;
     grid-row: 2/-3;
     list-style: none;
+    font-family: Tahoma, Verdana, Geneva, sans-serif;
 }
 
 .side-bar{
- 
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
@@ -34,9 +34,22 @@
     box-shadow: 0px 0px 9px -3px black;
     margin :3em;
     text-align: center;
-width: 50%; 
-height: 5%;
+width: 50%;  
+ height: 5%; 
 font-size: 1.5rem;
 border: .2px solid rgb(0, 15, 15);
 border-radius: 1em;
 }
+
+
+.fa-inbox {
+    border: .2px solid rgb(255, 255, 255);
+    align-items: center;
+    background-color: rgb(102, 193, 193);
+    width: 50%; 
+
+ height: 4%; 
+ border-radius: 1em;
+}
+
+

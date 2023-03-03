@@ -65,28 +65,45 @@ function save(email) {
 
 
 function getEmptyEmail(
+    status = 'sent',
+    name = '',
     subject = '',
     body = '',
     isRead = false,
-    sentAt = null,
-    removedAt = null,
-    from = '',
+    sentAt = Date.now(),
+    removed = false,
+    from = 'user@appsus.com',
     to = '',
+    isStared = false,
 
 ) {
     return {
-        id : '',
+        status,
+        name,
+        id: '',
         subject,
         body,
         isRead,
         sentAt,
-        removedAt,
+        removed,
         from,
         to,
+        isStared,
     }
 }
 
 
+const loggedinUser = {
+    email: 'user@appsus.com',
+    fullname: 'Mahatma Appsus'
+}
+const criteria = {
+    status: 'inbox/sent/trash/draft',
+    txt: 'puki', // no need to support complex text search
+    isRead: true, // (optional property, if missing: show all)
+    isStared: true, // (optional property, if missing: show all)
+    lables: ['important', 'romantic'] // has any of the labels
+}
 
 
 

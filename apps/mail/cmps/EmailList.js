@@ -3,15 +3,15 @@ import { emailService } from "../services/email.service.js"
 
 
 export default {
-    props:['emails'],
+    props: ['emails','emailId'],
     template: `
         <section >
-           <!-- <h1>list</h1> -->
             <ul>
-                <li  class="email-list" v-for="email in emails" :key="email.id" @click.stop="moveToDetails(email)">
+                <li class="email-list" v-for="email in emails"  :key="email.id" @click.stop="moveToDetails(email)">
+                    
                     <!-- <RouterLink :to="'/email/'+email.id">Details</RouterLink>  -->
-                    <EmailPreview :email="email"/>
-     
+                    <EmailPreview :email="email" />
+                    <!-- v-if="email.removed !== true -->
                     <!-- <div @click.stop="moveToEdit(email)"><i aria-hidden="true" title="Edit a Message" class="fa fa-pencil"></i></div> -->
                     <!-- <RouterLink :to.stop="'/email/edit/'+email.id"><i aria-hidden="true" title="Edit a Message" class="fa fa-pencil"></i></RouterLink> -->
                     
@@ -24,38 +24,72 @@ export default {
         </section>
     `,
     methods: {
-    //     remove(emailId) {
-    //         this.$emit('remove', emailId)
-    //     },
-    //     // showDetails(emailId){
-    //     //     this.$router.push('/email/'+ emailId)
-    //     // }
-      moveToDetails(email){
-          
-          console.log(email.isRead)
-        //   if(!email.isRead){
-        //       email.isRead =true
-        //       emailService.save(this.email)
-        //     } 
-            this.$router.push('/email/'+email.id)
-              console.log(email.isRead)
-           
+
+        removeEmail(emailId) {
+            console.log('im a father fukcker',emailId)
+            emailService.remove(emailId)
+                .then(() => {
+                    const idx = this.emails.findIndex(email => email.id === emailId)
+                    this.emails.splice(idx, 1)
+                    console.log('after then')
+                    
+            
+                })
+                .catch(err => {
+                    console.log('err')
+                    // eventBusService.emit('show-msg', { txt: 'email remove failed', type: 'error' })
+                })
+            },
+
+
+
+
+        //     remove(emailId) {
+        //         this.$emit('remove', emailId)
+        //     },
+        //     // showDetails(emailId){
+        //     //     this.$router.push('/email/'+ emailId)
+        //     // }
+        moveToDetails(email) {
+
+            console.log(email.isRead)
+            if (!email.isRead) {
+                email.isRead = true
+                emailService.save(email)
+            }
+            this.$router.push('/email/' + email.id)
+            console.log(email.isRead)
+
         },
-    //     moveToEdit(email){
-    //         this.$router.push('/email/edit/'+email.id)
-    //     }
+        //     moveToEdit(email){
+        //         this.$router.push('/email/edit/'+email.id)
+        //     }
     },
     components: {
         EmailPreview: EmailPreview,
     },
+    created() {
 
-    computed :{
+      
+
+            // console.log('created')
+
+            // const statusReg = new RegExp('inbox', 'i')
+            // // console.log(this.filterBy.subject)
+
+            // return this.emails.filter(email => statusReg.test(email.status))
+        
+
+
+    },
+
+    computed: {
         readClass() {
             return {
 
                 // 'unread': this.email.isRead === false,
                 // 'read': this.email.isRead === true,
             }
+        }
     }
-}
 }

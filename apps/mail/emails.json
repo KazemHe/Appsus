@@ -1,40 +1,60 @@
 [
   {
+    "status" : "sent",
     "id": "e101",
     "subject": "miss you!",
     "body": "mi est eros convallis auctor arcu dapibus himenaeos",
     "isRead": true,
     "sentAt": 1551133930594,
-    "removedAt": null,
-    "from": "momo@momo.com",
-    "to": "user@appsus.com"    
+    "removed": false,
+    "from": "user@appsus.com",
+    "to": "usedddr@appsus.com"    
   },
   {
+    "status" : "inbox",
     "id": "s1e01",
     "subject": "good luck ",
-    "body": "milsdhklsh pibus himenaeos",
+    "body": "milsdhklsh pibus himdsfsdafenaeos",
     "isRead": false,
     "sentAt": 887968,
-    "removedAt": null,
+    "removed": false,
     "from": "momo@momo.com",
     "to": "user@appsus.com" 
   },
   {
+    "status" : "inbox",
     "id": "s5501",
     "subject": "not today",
     "body": "milsdhklsh pibus himenaeos",
     "isRead": false,
     "sentAt": 8555  ,
-    "removedAt": null,
+    "removed": false,
+    "from": "momo@momo.com",
+    "to": "user@appsus.com" 
+  },
+  {
+    "status" : "inbox",
+    "id": "s5501",
+    "subject": "gsdgs today",
+    "body": "milsdhklsh pibus himefsdafasdfasdfadsfasdfnaeos",
+    "isRead": false,
+    "sentAt": 8555  ,
+    "removed": false,
+    "from": "momo@momo.com",
+    "to": "user@appsus.com" 
+  },
+  {
+    "status" : "trash",
+    "id": "s5501",
+    "subject": "not today",
+    "body": "milsdhklshdfsdfasdfsadfsaffasdf pibus himenaeos",
+    "isRead": true,
+    "sentAt": 8555  ,
+    "removed": true,
     "from": "momo@momo.com",
     "to": "user@appsus.com" 
   }
 
   
-
-
-
-
-
 
 ]

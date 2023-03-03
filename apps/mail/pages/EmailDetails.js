@@ -11,11 +11,12 @@ export default {
         <section   class="email-details" v-if="email">
 
             <nav>
-                <button></button>
      
-                <h1 class="subject">{{ email.subject }}</h1>
-                <h3 class="email-from">from :{{ email.from}}</h3>
-                <h3 class="email-content">{{ email.body}}</span></h3>
+                <h1 class="subject"><span>subject :</span>{{ email.subject }}</h1>
+                <h1 class="subject"><span>name :</span>{{ email.name }}</h1>
+                <h3 class="email-from"><span>subject :</span>{{ email.from}}</h3>
+                <h3 class="email-from"><span>to: :</span>{{ email.to}}</h3>
+                <h3 class="email-content"><span>body :</span>{{ email.body}}</span></h3>
                 <button>save as a note</button>
                 <button>delete</button>
             <!-- <RouterLink :to="'/email/' + email.prevBookId">Previous email</RouterLink> |

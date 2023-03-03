@@ -1,3 +1,5 @@
+import { emailService } from "../services/email.service.js"
+
 export default {
     props: ['email'],
     template: `
@@ -19,7 +21,8 @@ export default {
             <div class="icons">
                 <span>{{email.sentAt}}</span>
             <i @click.stop="moveToEdit(email)" aria-hidden="true" title="Edit a Message" class="fa fa-pencil"></i>
-                    <i aria-hidden="true" title="delete a message" class="fa fa-trash" @click.stop="remove(email.id)" ></i>
+                    <i aria-hidden="true" title="delete a message" class="fa fa-trash" @click.stop=" remove(email.id)" ></i>
+
                     <i  class="fa fa-envelope-open"></i> 
 </div>
         </article>
@@ -27,7 +30,23 @@ export default {
 
     methods: {
         remove(emailId) {
-            this.$emit('remove', emailId)
+            console.log('remove', emailId)
+            if (this.email.removed) {
+                this.email.status= 'deleted',
+                console.log('remove son of the bitch remove', emailId)
+                console.log('remove2', emailId)
+
+                this.$parent.removeEmail(emailId)
+        }
+            else {
+
+                this.email.removed = true,
+                    this.email.status = 'trash',
+                    emailService.save(this.email)
+            }
+
+
+            // this.$emit('remove', emailId)
         },
         // showDetails(emailId){
         //     this.$router.push('/email/'+ emailId)
@@ -50,7 +69,7 @@ export default {
 
             return {
 
-                'unread': this.email.isRead ,
+                'unread': this.email.isRead,
                 'read': !this.email.isRead,
             }
 
