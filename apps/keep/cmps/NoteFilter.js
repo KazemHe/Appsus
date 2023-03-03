@@ -1,13 +1,13 @@
 export default {
     template: `
         <section class="note-filter">
-            <input 
+            <input class="inbox-search"
                 v-model="filterBy.txt"
                 @input="filter" 
                 placeholder="Search"
                 type="text" />
 
-                <select v-model="filterBy.type" @input="filter">
+                <select class="option-selects" v-model="filterBy.type" @input="filter">
                   <option value="">All</option>
                   <option value="NoteTxt">Text</option>
                   <option value="NoteImg">Img</option>

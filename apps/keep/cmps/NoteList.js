@@ -6,11 +6,13 @@ export default {
         <section class="note-list">
            <!-- <h1>list</h1> -->
             <ul>
-                <li class="card-note" v-for="note in notes" :key="note.id" :style="changeStyle(note)" >
-                    <NotePreview :note="note"/>
+                <li class="card-note" v-for="note in notes" :key="note.id"  >
+                    <NotePreview :note="note"  @remove="remove" @edit="edit" @changePinMode="changePinMode" @changeColor="changeColor" @duplicate="duplicate"
+                    />
+                    <!-- <button @click="remove(note.id)"><i class="fa-solid fa-trash"></i></button> -->
                     <!-- <RouterLink :to="'/note/'+note.id">Details</RouterLink> |
                     <RouterLink :to="'/note/edit/'+note.id">Edit</RouterLink> | -->
-                    <!-- <button @click="showDetails(book.id)">Details</button> -->
+                    <button @click="showDetails(book.id)">Details</button>
                    
                 </li>
             </ul>
@@ -24,20 +26,28 @@ data() {
     }
 },
     methods: {
-        pinUp(noteId){
-            this.$emit('pinUp', noteId)
+        changePinMode(note){
+            
+            this.$emit('changePinMode', note)
+        },
+
+        edit(note){
+            this.$emit('edit', note)
         },
 
         remove(noteId) {
+          
             this.$emit('remove', noteId)
         },
 
-        edit(noteId){
-            this.$emit('edit', noteId)
+        duplicate(note){
+            
+            this.$emit('duplicate', note)
         },
 
-        changeStyle(note){
-
+        changeColor(selectedColor , noteId) {
+           
+            this.$emit('changeColor', selectedColor, noteId)
         }
 
         // showDetails(bId){

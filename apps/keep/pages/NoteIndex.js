@@ -1,85 +1,128 @@
-import { noteService as noteService } from '../services/noteService.js'
+    import { noteService as noteService } from '../services/noteService.js'
 
-import NoteEdit from '../cmps/NoteEdit.js'
-import NoteFilter from '../cmps/NoteFilter.js'
-import NoteList from '../cmps/NoteList.js'
-import { eventBus } from '../../../services/event-bus.service.js'
+    import NoteEdit from '../cmps/NoteEdit.js'
+    import NoteFilter from '../cmps/NoteFilter.js'
+    import NoteList from '../cmps/NoteList.js'
+    import { eventBus } from '../../../services/event-bus.service.js'
 
-export default {
-    template: `
-<section class="note-index">
-<NoteEdit @save="save" />
+    export default {
+        template: `
+    <section class="note-index">
+    <NoteEdit @save="save" />
 
-<NoteFilter @filter="setFilterBy"/>
+    <NoteFilter @filter="setFilterBy"/>
+    
+                <NoteList
+                    :notes="getPinned"
+                    v-if="notes && getPinned "
+                    @remove="removeNote"
+                    @changeColor="setChangeColor"
+                    @changePinMode="changePinMode" 
+                    @duplicate="duplicateNote"
+                />
+                <NoteList
+                    :notes="getUnPinned"
+                    v-if="notes"
+                    @remove="removeNote"
+                    @changeColor="setChangeColor"
+                    @changePinMode="changePinMode" 
+                    @duplicate="duplicateNote"
+                />
+            </section>
 
-            <NoteList v-if="notes"
-            :notes="filteredNotes" 
-            @remove="removeNote"
-            
-          />
+        `,
 
-          
-          <!-- <NoteList v-if="onEdit" /> -->
-            <!-- <BookEdit @note-saved="onSaveBook"/> -->
-            <!-- <BookDetails 
-                v-if="selectedBook" 
-                @hide-details="selectedBook = null"
-                :note="selectedBook"/> -->
-        </section>
+        data() {
+            return {
+                notes: null,
+                filterBy: {},
+                currNote: ''
+            }
+        },
 
-    `,
+        created() {
+            noteService.query()
+                .then(notes => {
+                    console.log(notes);
+                    this.notes = notes
+                })
 
-    data() {
-        return {
-            notes: null,
-            filterBy: {},
-            currNote: ''
-        }
-    },
+        },
 
-    created() {
-        noteService.query()
-            .then(notes => {
-                console.log(notes);
-                this.notes = notes
-            })
-    },
+        methods: {
+            setChangeColor(color) {
+                console.log(color);
 
-    methods: {
-        removeNote(noteId) {
-            console.log(noteId);
-            noteService.remove(noteId)
-                .then(() => {
-                    const idx = this.notes.findIndex(note => note.id === noteId)
-                    this.notes.splice(idx, 1)
-                    eventBus.emit('show-msg', { txt: 'note removed', type: 'success' })
+            },
+
+            removeNote(noteId) {
+                console.log(noteId);
+                noteService.remove(noteId)
+                    .then(() => {
+                        const idx = this.notes.findIndex(note => note.id === noteId)
+                        this.notes.splice(idx, 1)
+                        eventBus.emit('show-msg', { txt: 'note removed', type: 'success' })
                     })
                     .catch(err => {
                         eventBus.emit('show-msg', { txt: 'note remove failed', type: 'error' })
-                })
+                    })
+            },
+
+            // duplicateNote(note) {
+            //     console.log(this.notes)
+            //     const copy = { ...note }
+            //     copy.id = makeId()
+            //     this.notes.unshift(copy)
+             
+                
+               
+            // },
+
+            duplicateNote(note) {
+                const copy = { ...note }
+                copy.id =''
+                noteService.save(copy).then(copy => {
+                   this.notes.push(copy)
+                });
+            },
+            
+            changePinMode(note) {
+                note.isPinned = !note.isPinned
+                noteService.save(note)
+            },
+
+            save(note) {
+                this.notes.push(note)
+            },
+
+            setFilterBy(filterBy) {
+                this.filterBy = filterBy
+            }
         },
 
-        save(note) {
-            this.notes.push(note)
-        },
+        computed: {
 
-        setFilterBy(filterBy) {
-            this.filterBy = filterBy
+            getPinned() {
+                const pinnedNotes = this.notes.filter(note => note.isPinned)
+                const titleRegex = new RegExp(this.filterBy.search, 'i')
+                const typeRegex = new RegExp(this.filterBy.type, 'i')
+                return pinnedNotes.filter(note => /*titleRegex.test(note.info.title) &&*/ typeRegex.test(note.type))
+              },
+              getUnPinned() {
+                const unpinnedNotes = this.notes.filter(note => !note.isPinned)
+                const titleRegex = new RegExp(this.filterBy.search, 'i')
+                const typeRegex = new RegExp(this.filterBy.type, 'i')
+                return unpinnedNotes.filter(note => /*titleRegex.test(note.info.title) &&*/ typeRegex.test(note.type))
+              },
+            },
+            
+
+        components: {
+            NoteList,
+            NoteFilter,
+            NoteEdit
         }
-    },
-
-    computed: {
-        filteredNotes() {
-            const regex = new RegExp(this.filterBy.type, 'i')
-            return this.notes.filter(note => regex.test(note.type))// note. )
-        },
-    },
-
-    components: {
-        NoteList: NoteList,
-        NoteFilter: NoteFilter,
-        NoteEdit
     }
-}
 
-
+  
+ 

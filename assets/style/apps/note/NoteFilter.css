@@ -1,0 +1,19 @@
+.note-filter{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+
+.inbox-search{
+    padding: 13px;
+    border-radius: 20px   ;
+}
+
+
+.option-selects{
+    padding: 13px;
+    margin: 5px;
+    border-radius: 20px;
+}
