@@ -1,5 +1,5 @@
 .note-edit{
-    position: relative;
+   
     display: flex;
     margin-bottom:60px;
     margin-top:  20px;
@@ -12,7 +12,3 @@ margin: 5px;
 
 }
 
-.edit-color{
-    position: absolute;
-    
-}
