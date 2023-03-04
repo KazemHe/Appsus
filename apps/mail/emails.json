@@ -1,5 +1,6 @@
 [
   {
+    "name":"kazem",
     "status" : "sent",
     "id": "e101",
     "subject": "miss you!",
@@ -11,6 +12,7 @@
     "to": "usedddr@appsus.com"    
   },
   {
+    "name":"puki",
     "status" : "inbox",
     "id": "s1e01",
     "subject": "good luck ",
@@ -22,6 +24,7 @@
     "to": "user@appsus.com" 
   },
   {
+    "name":"shuki",
     "status" : "inbox",
     "id": "s5501",
     "subject": "not today",
@@ -33,6 +36,7 @@
     "to": "user@appsus.com" 
   },
   {
+    "name":"lulu",
     "status" : "inbox",
     "id": "s5501",
     "subject": "gsdgs today",
@@ -44,6 +48,7 @@
     "to": "user@appsus.com" 
   },
   {
+    "name":"koko",
     "status" : "trash",
     "id": "s5501",
     "subject": "not today",

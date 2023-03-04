@@ -12,8 +12,8 @@ export default {
 
             <nav>
      
-                <h1 class="subject"><span>subject :</span>{{ email.subject }}</h1>
                 <h1 class="subject"><span>name :</span>{{ email.name }}</h1>
+                <h1 class="subject"><span>subject :</span>{{ email.subject }}</h1>
                 <h3 class="email-from"><span>subject :</span>{{ email.from}}</h3>
                 <h3 class="email-from"><span>to: :</span>{{ email.to}}</h3>
                 <h3 class="email-content"><span>body :</span>{{ email.body}}</span></h3>
