@@ -1,6 +1,6 @@
 [
   {
-    "name":"kazem",
+    "name":"momo",
     "status" : "sent",
     "id": "e101",
     "subject": "miss you!",
@@ -17,13 +17,13 @@
     "status" : "inbox",
     "id": "s1e01",
     "subject": "good luck ",
-    "body": "milsdhklsh pibus himdsfsdafenaeos",
+    "body": "milsdhklsh pibusplacerat nisi sodales suscipit tellus tincidunt mauris elit sit luctus interdum ad d",
     "isRead": false,
     "sentAt": 887968,
     "removed": false,
     "from": "momo@momo.com",
     "to": "user@appsus.com" ,
-    "isStared": "false"
+    "isStared": "true"
   },
   {
     "name":"shuki",
@@ -43,8 +43,8 @@
     "status" : "inbox",
     "id": "s5501",
     "subject": "gsdgs today",
-    "body": "milsdhklsh pibus himefsdafasdfasdfadsfasdfnaeos",
-    "isRead": false,
+    "body": "milsdhklsh pibus him placerat nisi sodales suscipit tellus terat nisi sodales suscipit tellus tincidunt mauris elit sit luctus interdum ad d dsfasdfnaeos",
+    "isRead": true,
     "sentAt": 8555  ,
     "removed": false,
     "from": "momo@momo.com",
@@ -56,9 +56,22 @@
     "status" : "trash",
     "id": "s5501",
     "subject": "not today",
-    "body": "milsdhklshdfsdfasdfsadfsaffasdf pibus himenaeos",
+    "body": "placerat nisi sodales suscipit tellus tincidunt mauris elit sit luctus interdum ad d pibus himenaeos",
     "isRead": true,
     "sentAt": 8555  ,
+    "removed": true,
+    "from": "momo@momo.com",
+    "to": "user@appsus.com" ,
+    "isStared": "false"
+  },
+    {
+    "name":"toto",
+    "status" : "trash",
+    "id": "s5501",
+    "subject": "not today",
+    "body": "placerat nisi sodales suscipit interdumtellus tincidunt mauris elit sit luctus interdum ad d pibus himena interdum eos",
+    "isRead": false,
+    "sentAt": 8778555  ,
     "removed": true,
     "from": "momo@momo.com",
     "to": "user@appsus.com" ,
