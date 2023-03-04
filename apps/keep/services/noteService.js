@@ -6,11 +6,17 @@ import { utilService } from '../../../services/util.service.js'
 const NOTE_KEY = 'noteDB'
 
 _createNotes()
-// _setNextPrevNoteId()
-// _makeNoteId(id)
+
 
 export const noteService = {
-    query,save, remove, get, createNote, pinNote, doubleNote, getNoteId, getEmptyNote
+    query,
+    save,
+    remove,
+    get,
+    createNote, 
+    pinNote,
+    getNoteId, 
+    getEmptyNote
 
 
     // getEmptyBook: getEmptyBook,
@@ -24,6 +30,7 @@ function getNoteId(noteId){
 
 
 function query(filterBy = {}) { 
+
     return storageService.query(NOTE_KEY)
     .then(notes => {
         const regexType = new RegExp(filterBy.type, 'i')
@@ -35,21 +42,8 @@ function query(filterBy = {}) {
     })
 }
 
-   // .then(books => {
-    //     if (filterBy.txt) {
-    //         const regex = new RegExp(filterBy.txt, 'i')
-    //         books = books.filter(book => regex.test(book.title))
-    //     }
-    //     if (filterBy.price) {
-    //         books = books.filter(book => book.listPrice.amount >= filterBy.price)
-    //     }
-    //     return books
-    // })
-
-
 
 function get(noteId) {
-    console.log(noteId);
     console.log(storageService.get(NOTE_KEY, noteId));
     return storageService.get(NOTE_KEY, noteId)
        
@@ -89,25 +83,6 @@ function getEmptyNote(type) {
         }
     }
 }
-
-
-// function getEmptyNote() {
-
-//  const note = {
-//         id: '',
-//         createdAt: Date.now(),
-//         type: 'NoteTxt',
-//         isPinned: false,
-//         style: {
-//             backgroundColor: ''
-//         },
-//         info: {
-//             txt: ''
-//         }
-        
-//     }
-//     return note
-// }
 
 function _createNotes() {
     let notes = utilService.loadFromStorage(NOTE_KEY)
@@ -156,29 +131,9 @@ function _createNotes() {
     return notes
 }
 
-// function _createBook(title, amount = 120) {
-//     const book = getEmptyBook(title, amount)
-//     book.id = utilService.makeId()
-//     return book
-// }
 
 
-// function addReview(bookId, review) {
 
-//     console.log('hi')
-//     let currBook = get(bookId).then(book => {
-
-//         if (!book.reviews) {
-//             book.reviews = []
-//         }
-
-//         book.reviews.push(review)
-
-//         save(book)
-//     })
-//     return currBook
-
-// }
 
 // function _setNextPrevNoteId(note) {
 //     return storageService.query(NOTE_KEY).then((notes) => {
@@ -193,14 +148,13 @@ function _createNotes() {
 // }
 
 
-function createNote(notes) {
-    let note
-    switch (notes.type) {
+function createNote (type) {
+    let note;
+    switch (type) {
         case 'NoteTxt':
-            note =
-            {
-                id: getNextId(notes),
-                createdAt: 1112222,
+            note = {
+                id: utilService.makeId(),
+                createdAt: Date.now(),
                 type: 'NoteTxt',
                 isPinned: false,
                 style: {
@@ -209,13 +163,12 @@ function createNote(notes) {
                 info: {
                     txt: 'Fullstack Me Baby!'
                 }
-            }
-            break
-
+            };
+            break;
         case 'NoteImg':
-
             note = {
-                id: getNextId(notes),
+                id: utilService.makeId(),
+                createdAt: Date.now(),
                 type: 'NoteImg',
                 isPinned: false,
                 info: {
@@ -225,13 +178,12 @@ function createNote(notes) {
                 style: {
                     backgroundColor: '#00d'
                 }
-
-            }
-            break
-
+            };
+            break;
         case 'NoteTodos':
             note = {
-                id: getNextId(notes),
+                id: utilService.makeId(),
+                createdAt: Date.now(),
                 type: 'NoteTodos',
                 isPinned: false,
                 info: {
@@ -240,11 +192,11 @@ function createNote(notes) {
                         { txt: 'Driving license', doneAt: null },
                         { txt: 'Coding power', doneAt: 187111111 }
                     ]
-
                 }
-            }
-            break
+            };
+            break;
     }
+    return note;
 }
 
 
@@ -261,9 +213,7 @@ function pinNote (id){
     })
 }
 
-function doubleNote() {}
 
-function changeTxt(id , noteTxt){
-    return get(id , noteTxt)
-}
+
+
 

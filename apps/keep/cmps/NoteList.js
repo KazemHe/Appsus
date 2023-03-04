@@ -14,15 +14,9 @@ export default {
         </section>
     `,
 
-    
-data() {
-    return {
-        selectedColor: ""
-    }
-},
+
     methods: {
-        changePinMode(note){
-            
+        changePinMode(note){ 
             this.$emit('changePinMode', note)
         },
 
@@ -30,27 +24,23 @@ data() {
             this.$emit('edit', note)
         },
 
-        remove(noteId) {
-          
+        remove(noteId) {      
             this.$emit('remove', noteId)
         },
+
         updateNote(note){
             console.log(note);
             this.$emit('updateNote', note)
         },
-        duplicate(note){
-            
+    
+        duplicate(note){ 
             this.$emit('duplicate', note)
         },
 
         changeColor(selectedColor , noteId) {
-           
             this.$emit('changeColor', selectedColor, noteId)
         }
 
-        // showDetails(bId){
-        //     // this.$router.push('/book/'+ bookId)
-        // },
     },
     components: {
         NotePreview,

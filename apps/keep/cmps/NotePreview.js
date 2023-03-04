@@ -7,7 +7,7 @@ export default {
     emits: ['updateNote'],
     name: 'NotePreview',
     template: `
-    <div></div>
+    
         <article class="note-preview" @mouseover="isHovered = true" @mouseleave="isHovered = false">
             <component :is="note.type" :note="note" /> 
             <div class="flex" v-if="isHovered">
@@ -31,7 +31,6 @@ export default {
 
     methods: {
         updateNoteId(id) {
-            console.log(id);
             this.noteId = id;
         },
 
@@ -53,9 +52,8 @@ export default {
                 note.style = {}
             }
             note.style.backgroundColor = this.selectedColor
-            // console.log(note.style.backgroundColor);
             this.$emit('updateNote', note)
-            // this.$emit('changeColor', selectedColor , noteId);
+           
         },
 
     },

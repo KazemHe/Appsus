@@ -8,27 +8,29 @@
     export default {
         name: 'NoteIndex',
         template: `
-         <NoteFilter @filter="setFilterBy"/>
-    <section class="note-index">
-    <NoteEdit @save="save" />
     
-                <NoteList
-                    :notes="getPinned"
-                    v-if="notes && getPinned "
-                    @remove="removeNote"
-                    @changePinMode="changePinMode" 
-                    @updateNote="updateNote"
-                    @duplicate="duplicateNote"
-                />
-                <NoteList
-                    :notes="getUnPinned"
-                    v-if="notes"
-                    @remove="removeNote"
-                    @updateNote="updateNote"
-                    @changePinMode="changePinMode" 
-                    @duplicate="duplicateNote"
-                />
-            </section>
+         <NoteFilter @filter="setFilterBy"/>
+
+        <section class="note-index">
+        <NoteEdit @save="save" />
+
+                      <NoteList
+                            :notes="getPinned"
+                            v-if="notes && getPinned "
+                            @remove="removeNote"
+                            @changePinMode="changePinMode" 
+                            @updateNote="updateNote"
+                            @duplicate="duplicateNote"
+                        />
+                        <NoteList
+                            :notes="getUnPinned"
+                            v-if="notes"
+                            @remove="removeNote"
+                            @updateNote="updateNote"
+                            @changePinMode="changePinMode" 
+                            @duplicate="duplicateNote"
+                        />
+                    </section>
 
         `,
 
@@ -50,7 +52,6 @@
         },
 
         methods: {
-         
             updateNote(note){
                 noteService.save(note)
                 .then(savedNote => {
@@ -60,7 +61,6 @@
             },
 
             removeNote(noteId) {
-                console.log(noteId);
                 noteService.remove(noteId)
                     .then(() => {
                         const idx = this.notes.findIndex(note => note.id === noteId)
@@ -86,11 +86,12 @@
             },
 
             save(note) {
-                console.log(note);
                 this.notes.push(note)
             },
 
             setFilterBy(filterBy) {
+                console.log(filterBy);
+                
                 this.filterBy = filterBy
             }
         },
@@ -99,15 +100,15 @@
 
             getPinned() {
                 const pinnedNotes = this.notes.filter(note => note.isPinned)
-                const titleRegex = new RegExp(this.filterBy.title, 'i')
+                const titleRegex = new RegExp(this.filterBy.txt, 'i')  
                 const typeRegex = new RegExp(this.filterBy.type, 'i')
-                return pinnedNotes.filter(note => titleRegex.test(note.info.title) && typeRegex.test(note.type))
+                return pinnedNotes.filter(note => titleRegex.test(note.info.title) && typeRegex.test(note.type) && typeRegex.test(note.info.txt))
               },
               getUnPinned() {
                 const unpinnedNotes = this.notes.filter(note => !note.isPinned)
-                const titleRegex = new RegExp(this.filterBy.search, 'i')
+                const titleRegex = new RegExp(this.filterBy.txt, 'i')
                 const typeRegex = new RegExp(this.filterBy.type, 'i')
-                return unpinnedNotes.filter(note => titleRegex.test(note.info.title) && typeRegex.test(note.type))
+                return unpinnedNotes.filter(note => titleRegex.test(note.info.title) && typeRegex.test(note.type)  && typeRegex.test(note.info.txt)) 
               },
             },
             

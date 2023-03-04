@@ -8,7 +8,7 @@ export default {
     <form @submit.prevent="save">
  <div class="edit-texts">
 
-        <div class="note-types flex">
+        <div class="note-types flex" @click="isOpen=true">
 
           <div class="flex" >
             <span class="edit-head">ADD YOUR NOTE:</span>
@@ -20,23 +20,24 @@ export default {
           </div>
         
 
-        </div>
-        <label >title:</label>
-        <input name="title" type="text" v-model="note.info.title">
-        <div v-if="selectedType === 'NoteTxt'">
-          <label for="txt">txt:</label>
-          <input name="txt" type="text" v-model="note.info.txt">
-        </div>
-
-        <div v-if="selectedType === 'NoteImg'">
-          <label for="url">url:</label>
-          <input name="url" type="text" v-model="note.info.url">
-          <label for="imgTitle">title:</label>
-          <input name="imgTitle" type="text" v-model="note.info.title">
-        </div>
-
-        <div v-if="selectedType === 'NoteTodos'">
-          <label for="todosTitle">title:</label>
+  </div>
+  
+  <div v-if="selectedType === 'NoteTxt'">
+  <label >title:</label>
+  <input name="title" type="text" v-model="note.info.title">
+    <label for="txt">txt:</label>
+    <input name="txt" type="text" v-model="note.info.txt">
+  </div>
+  
+  <div v-if="selectedType === 'NoteImg'">
+    <label for="url">url:</label>
+    <input name="url" type="text" v-model="note.info.url">
+    <label for="imgTitle">title:</label>
+    <input name="imgTitle" type="text" v-model="note.info.title">
+  </div>
+  
+  <div v-if="selectedType === 'NoteTodos'">
+    <label for="todosTitle">title:</label>
           <input name="todosTitle" type="text" v-model="note.info.title">
           <label for="todos">todos:</label>
           <div v-for="(todo, index) in note.info.todos" :key="index">
@@ -45,11 +46,12 @@ export default {
           </div>
           <button  @click.prevent="addTodo">+</button>
         </div>
-
-
+        
+        
         <button class="v-button" :disabled="!selectedType" @click="save; isSaveClicked = true"><i class="fa-solid fa-v"></i></button>
-
+        
       </div>
+   
     </form>
   </section>
   `,
@@ -58,7 +60,7 @@ export default {
     return {
       selectedType: '',
       note: noteService.getEmptyNote(),
-      isOpen: false
+   
     }
   },
 
@@ -67,7 +69,7 @@ export default {
     if (noteId) {
       noteService.get(noteId)
         .then(note => {
-          this.note = note;
+          this.note = note
           this.selectedType = note.type;
         });
     }
@@ -79,35 +81,32 @@ export default {
     },
 
     removeTodo(index) {
-      this.note.info.todos.splice(index, 1);
+      this.note.info.todos.splice(index, 1)
     },
 
     save() {
-      if (!this.selectedType) return; // make sure a note type is selected
-      
+      if (!this.isSaveClicked || !this.selectedType) return
       if (this.note.id) {
         noteService.update(this.note).then(note => {
-          // update the note in the parent component
-          this.$emit('updateNote', note);
+          this.$emit('updateNote', note)
         });
-      } else {
-        // only save the note when the user clicks on the "v-button"
+      }
+       else {
         if (this.isSaveClicked) {
-          noteService.save(this.note).then(note => {
-            // add the new note to the parent component
+            noteService.save(this.note).then(note => {
             this.$emit('save', note);
-            // clear the form
-            this.note = noteService.getEmptyNote();
-          });
+            this.note = noteService.getEmptyNote()
+            this.isSaveClicked = false
+          })
         }
       }
     },
+      },
 
-  watch: {
-    selectedType() {
-      this.note = noteService.getEmptyNote();
-      this.note.type = this.selectedType;
+      watch: {
+        selectedType() {
+          this.note = noteService.getEmptyNote()
+          this.note.type = this.selectedType
     }
   }
-}
 }
