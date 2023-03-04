@@ -4,17 +4,21 @@
 
 html {
   
+  /* font-family: */
 }
 
 .main-routers {
   min-height: 80vh;
 }
 
-
+li {
+  list-style: none;
+}
 
 body {
   margin: 0;
-  color: var(--clr4);
+  background: #f6f8fc;
+  /* color: var(--clr4); */
 }
 
 h1,
@@ -24,7 +28,9 @@ h4,
 h5,
 h6 {
   margin: 0 0 1em;
-  font-family: 'Edu VIC WA NT Beginner', cursive;
+  /* font-family: 'Edu VIC WA NT Beginner', cursive; */
+  font-family:  "Google Sans",Roboto,RobotoDraft,Helvetica,Arial,sans-serif;
+
 }
 
 p {

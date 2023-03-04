@@ -7,7 +7,7 @@ export default {
             
 
         <div class="fromto">
-            <h2>from{{ email.name}}</h2>
+            <i class="fa-regular fa-star"></i> <span clas="e-sub">{{ email.name}}</span>
             <!-- <h2>to {{ email.to }}</h2> -->
 </div>
 
@@ -22,7 +22,7 @@ export default {
                 <span> {{formattedDate}}</span>
             <i @click.stop="moveToEdit(email)" aria-hidden="true" title="Edit a Message" class="fa fa-pencil"></i>
                     <i aria-hidden="true" title="delete a message" class="fa fa-trash" @click.stop=" remove(email.id)" ></i>
-
+          
                     <i  class="fa fa-envelope-open"></i> 
 </div>
         </article>

@@ -10,14 +10,13 @@ export default {
     template: `
         <section class="email-index">
             <nav class="side-bar">
-                <i class="fa-duotone fa-envelope"></i>
-                
-
+            <div><i class="fa-sharp fa-solid fa-square-envelope"></i><span class="e-sub">Mister Email</span></div>
                 <RouterLink class="compose" to="/email/edit"><i class="fa-regular fa-pen-to-square"></i>compose</RouterLink>
-      <i class="fa-solid fa-inbox" @click="filterBy.status = 'inbox'"></i><h2>index {{this.unreadCount}}</h2>  
+      <div @click="filterBy.status = 'inbox'" class="status-icons"><i class="fa-solid fa-inbox" ><span class="e-sub"> index {{ this.unreadCount}}</span></i></div>
                 <!-- unread emails: {{this.unreadCount}} -->    
-               <i class="fa-solid fa-trash"  @click="filterBy.status = 'trash'"><span>trash</span></i>
-               <i class="fa-solid fa-paper-plane "  @click="filterBy.status = 'sent'" ></i>sent
+                <div class="status-icons"><i class="fa-regular fa-star"> <span class="e-sub"> star</span></i></div>
+                <div class="status-icons" @click="filterBy.status = 'trash'">  <i class="fa-solid fa-trash" ><span class="e-sub"> trash</span></i></div>
+                <div class="status-icons" @click="filterBy.status = 'sent'" >  <i class="fa-solid fa-paper-plane "  ><span class="e-sub"> sent</span></i></div>
             </nav>
        
 

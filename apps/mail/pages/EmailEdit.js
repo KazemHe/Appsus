@@ -4,10 +4,10 @@ import { eventBusService } from "../services/event-bus.service.js"
 
 export default {
     template: `
-        <section class="email-form"> 
+        <section > 
         <!-- <h2>{{(email.id)? 'Edit' : 'Add'}} a email</h2> -->
-            <h2>sent a email</h2>
-           <form @submit.prevent="save"> 
+            <!-- <h2>sent a email</h2> -->
+           <form @submit.prevent="save" class="email-form"> 
            <!-- <div class="email-form"> -->
   <input type="text" v-model="email.to" class="email-input to" placeholder="To">
   <input type="text" v-model="email.subject" class="email-input " placeholder="Subject">
