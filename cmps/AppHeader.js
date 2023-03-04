@@ -13,7 +13,7 @@ export default {
         <div class="app-header-dropdown-menu" :class="{ 'is-open': isDropdownOpen }">
           <router-link to="/keep">keep</router-link>|
           <router-link to="/email">email</router-link>|
-          <router-link to="/book">miss books</router-link>
+          <!-- <router-link to="/book">miss books</router-link> -->
         </div>
       </div>
     </nav>
