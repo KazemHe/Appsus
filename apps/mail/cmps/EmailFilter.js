@@ -2,11 +2,11 @@ export default {
     template: `
         <section class="email-filter">
         <!-- <i class="fa-solid fa-magnifying-glass"></i> -->
-            <input 
-                v-model="filterBy.subject"
-              
-                placeholder="🔍 Search"
-                type="text"  />
+            <input  
+             v-model="filterBy.subject"
+             placeholder="🔍 Search"
+             class ="email-search"     
+             type="text"  />
             <!-- <input 
                 v-model="filterBy.price"
                 @input="filter" 

@@ -7,19 +7,19 @@ export default {
             
 
         <div class="fromto">
-            <h2>from{{ email.from }}</h2>
+            <h2>from{{ email.name}}</h2>
             <!-- <h2>to {{ email.to }}</h2> -->
 </div>
 
-            <div class="email-body">
-            <h2 class="email-subject">{{ email.subject }}</h2>
-            <p class="email-body">{{ email.body }}</p>
-</div>
+            <!-- <div class="email-body"> -->
+            <!-- <h2 class="email-subject">{{ email.subject }}</h2> -->
+            <p class="email-body"><span class="e-sub">{{ email.subject }}</span> {{ email.body }}</p>
+<!-- </div> -->
             <!-- <RouterLink :to.stop="'/email/edit/'+email.id"><i aria-hidden="true" title="Edit a Message" class="fa fa-pencil"></i></RouterLink> -->
             <!-- <button @click="showDetails(email.id)">Details</button> -->
             <!-- <button @click="remove(email.id)">delet</button> -->
             <div class="icons">
-                <span>{{email.sentAt}}</span>
+                <span> {{formattedDate}}</span>
             <i @click.stop="moveToEdit(email)" aria-hidden="true" title="Edit a Message" class="fa fa-pencil"></i>
                     <i aria-hidden="true" title="delete a message" class="fa fa-trash" @click.stop=" remove(email.id)" ></i>
 
@@ -28,16 +28,27 @@ export default {
         </article>
     `,
 
+    data() {
+
+        return {
+
+            sent: this.email.sentAt,
+        }
+
+    },
+
+
+
     methods: {
         remove(emailId) {
             console.log('remove', emailId)
             if (this.email.removed) {
-                this.email.status= 'deleted',
-                console.log('remove son of the bitch remove', emailId)
+                this.email.status = 'deleted',
+                    console.log('remove son of the bitch remove', emailId)
                 console.log('remove2', emailId)
 
                 this.$parent.removeEmail(emailId)
-        }
+            }
             else {
 
                 this.email.removed = true,
@@ -63,6 +74,11 @@ export default {
 
     computed: {
 
+        formattedDate() {
+            const date = new Date(this.sent);
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            return date.toLocaleDateString('en-US', options);
+        },
 
 
         readClass() {

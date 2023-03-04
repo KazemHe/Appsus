@@ -7,8 +7,15 @@
 
 
 .inbox-search{
-    padding: 13px;
-    border-radius: 20px   ;
+
+
+    background:whitesmoke;
+    transition:all .5s ease;
+    border-radius:5px;
+    border:.1px solid lightgrey;
+
+    /* padding: 13px;
+    border-radius: 20px   ; */
 }
 
 
