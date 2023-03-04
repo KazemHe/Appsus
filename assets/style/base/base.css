@@ -47,7 +47,7 @@ a {
 
 
 /* Dont stretch my Media */
-img,
+
 embed,
 video,
 object {
@@ -65,4 +65,9 @@ button {
 .debug * {
   outline: 1px solid gold
 }
-
+.hp-img{
+  display: flex;
+  justify-content: center;
+  width: 10em;
+  margin: 6em;
+}
