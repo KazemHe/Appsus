@@ -1,5 +1,5 @@
 .note-list ul {
-    columns: auto 10em;
+    columns: auto 15em;
     list-style-type: none;
 }
 
@@ -11,6 +11,6 @@
 }
     
 .edit-button{
-    background-color: white;
+    background-color: transparent;
     border: none;
 }

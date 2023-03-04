@@ -1,7 +1,7 @@
 export default {
     props: ['note'],
     template: `
-    <h2>{{ note.id }}</h2>
+  <h1>TODO</h1>
     <h2>{{ note.info.title }}</h2>
 `,
 

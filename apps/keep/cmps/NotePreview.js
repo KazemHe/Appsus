@@ -4,29 +4,29 @@ import NoteTxt from "./NoteTxt.js"
 
 export default {
     props: ['note'],
+    emits: ['updateNote'],
+    name: 'NotePreview',
     template: `
-        <article class="note-preview">
+
+        <article class="note-preview" @mouseover="isHovered = true" @mouseleave="isHovered = false">
             <component :is="note.type" :note="note" /> 
-            <button class="edit-button" @click="updateNoteId(note.id)"> <input type="color" v-model="selectedColor" class="fa-solid fa-palette" /> </button>
-            <button class="edit-button" @click="remove(note.id)"><i class="fa-solid fa-trash"></i></button>
-            <button class="edit-button" @click="changePinMode(note)"><i class="fa-solid fa-thumbtack"></i></button>
-            <button class="edit-button" @click="duplicate(note)"><i class="fa-solid fa-pencil"></i></button>
+            <div class="flex" v-if="isHovered">
+                <button class="edit-button"> <input type="color" v-model="selectedColor" class="fa-solid fa-palette edit-button" @input="changeColor" /> </button>
+                <button class="edit-button" @click="remove(note.id)"><i class="fa-solid fa-trash"></i></button>
+                <button class="edit-button" @click="changePinMode(note)"><i class="fa-solid fa-thumbtack"></i></button>
+                <button class="edit-button" @click="duplicate(note)"> <i class="fa-regular fa-clone"></i></button>
+            </div>
         </article>
-
-
-
-
-
     `,
     data() {
         return {
-            selectedColor: "#ffffff",
-            noteId: ''
+            selectedColor: '',
+            isHovered: false
         }
     },
 
     created() {
-        console.log(this.note);
+        
     },
 
     methods: {
@@ -47,17 +47,19 @@ export default {
             this.$emit('duplicate', note)
         },
 
-        changeColor(noteId) {
-            this.$emit('changeColor', selectedColor , noteId);
+        changeColor() {
+            const note = JSON.parse(JSON.stringify(this.note))
+            if(!note.style){
+                note.style = {}
+            }
+            note.style.backgroundColor = this.selectedColor
+            // console.log(note.style.backgroundColor);
+            this.$emit('updateNote', note)
+            // this.$emit('changeColor', selectedColor , noteId);
         },
 
     },
-    watch: {
-        selectedColor(newVal) {
-            this.$emit('changeColor', newVal);
-        
-        }
-    },
+  
 
     components: {
         NoteImg,

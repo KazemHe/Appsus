@@ -4,16 +4,11 @@ export default {
     props:['notes'],
     template: `
         <section class="note-list">
-           <!-- <h1>list</h1> -->
+          
             <ul>
-                <li class="card-note" v-for="note in notes" :key="note.id"  >
-                    <NotePreview :note="note"  @remove="remove" @edit="edit" @changePinMode="changePinMode" @changeColor="changeColor" @duplicate="duplicate"
+                <li class="card-note" v-for="note in notes" :style="note.style" :key="note.id"  >
+                    <NotePreview :note="note"  @remove="remove" @edit="edit" @changePinMode="changePinMode" @updateNote="updateNote" @changeColor="changeColor" @duplicate="duplicate"
                     />
-                    <!-- <button @click="remove(note.id)"><i class="fa-solid fa-trash"></i></button> -->
-                    <!-- <RouterLink :to="'/note/'+note.id">Details</RouterLink> |
-                    <RouterLink :to="'/note/edit/'+note.id">Edit</RouterLink> | -->
-                    <button @click="showDetails(book.id)">Details</button>
-                   
                 </li>
             </ul>
         </section>
@@ -22,7 +17,7 @@ export default {
     
 data() {
     return {
-        selectedColor: "#ffffff"
+        selectedColor: ""
     }
 },
     methods: {
@@ -39,7 +34,10 @@ data() {
           
             this.$emit('remove', noteId)
         },
-
+        updateNote(note){
+            console.log(note);
+            this.$emit('updateNote', note)
+        },
         duplicate(note){
             
             this.$emit('duplicate', note)
