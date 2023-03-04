@@ -3,9 +3,10 @@
   justify-content: space-between;
   align-items: center;
   padding: 1em;
-  height: 4em;
-  background-color: var(--clr5);
+  /* height: 4em; */
+  background-color:lightblue;
   color: var(--secondary-clr1);
+  gap: 3px;
 }
 
 .app-header h1 {
@@ -45,6 +46,7 @@
   font-size: 1.2rem;
   cursor: pointer;
   line-height: 1;
+  padding: 3px;
 }
 
 .app-header-dropdown-menu {
@@ -56,7 +58,7 @@
   display: none;
   padding: 0.5em;
   background-color: var(--clr5);
-  box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.2);
+  /* box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.2); */
 }
 
 .app-header-dropdown-menu.is-open {

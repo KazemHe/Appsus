@@ -65,9 +65,14 @@ button {
 .debug * {
   outline: 1px solid gold
 }
-.hp-img{
+
+
+.home-page{
   display: flex;
   justify-content: center;
+}
+.hp-img{
+
   width: 10em;
   margin: 6em;
 }
