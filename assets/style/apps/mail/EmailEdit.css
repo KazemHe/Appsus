@@ -10,7 +10,11 @@
     justify-self: end;
 } */
 
+.edit-container{
 
+width: 40em;
+height: 80em;
+}
 /* The container for the form */
 .email-form {
     display: grid;
@@ -38,16 +42,16 @@
   }
   
 
-  .email-form >.to{
-   grid-row: 0/1;
+ .email-form > .to{
+   grid-row: 1/2;
  }
   
   .email-form > .sub{
-   grid-row: 1/2;
- }
-  .email-form > .msg{
    grid-row: 2/3;
  }
+  .email-form > .msg{
+   grid-row: 3/4;
+ } 
   
   /* The submit button */
   .email-submit {
