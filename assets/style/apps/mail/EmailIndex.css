@@ -51,8 +51,8 @@ gap: 2em;
 }
 .status-icons :hover{
     /* background: #5a5e62; */
-    border: 1em solid rgb(216, 209, 209);
-    background-color:  rgb(216, 209, 209);
+    border: 1em solid rgb(220, 236, 241);
+    background-color:  rgb(220, 236, 241);
     border-top-right-radius: 1em;
     border-bottom-right-radius:  1em;
 
@@ -64,7 +64,21 @@ gap: 2em;
 
 
 
+.detail-btn{
 
+    display: inline-block;
+    background-color: #1a73e8;
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    padding: 12px 20px;
+    border-radius: 2em;
+    cursor: pointer;
+    transition: background-color 0.2s;
+
+}
 
 .compose{
     text-align: center;

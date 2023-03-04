@@ -21,7 +21,7 @@ background-color: lightcyan;
     cursor: pointer;
 display: grid;
 grid-template-columns: minmax(auto, 20em) 1fr minmax(4em , auto);
-border-bottom: .2px solid lightgray;
+border-bottom: .2px solid rgb(172, 153, 153);
 gap: 1em;
 align-items: center;
 
@@ -42,8 +42,13 @@ align-items: center;
 
 
 .email-list :hover{
-    box-shadow: 1em 1em 5em rgb(190, 179, 179);
+    /* box-shadow: 1em 1em 5em rgb(130, 7, 7); */
+background-color:rgb(220, 236, 241);
 
+
+    /* border-image: linear-gradient(black , white) 30;
+border-width: 5px;
+border-style: solid; */
 
     /* box-shadow: 0 0 11px lightgray(33,33,33,.2);  */
     /* background-color: lightgray; */
@@ -58,7 +63,7 @@ align-items: center;
         grid-column:-2 / -1;
 }
 .email-container .email-body{
-
+font-weight: normal;
     grid-column:-3/-2;
 }
 .email-container .fromto{
@@ -81,7 +86,7 @@ align-items: center;
 }
 
 .read { 
- background-color:rgb(134, 118, 118);
+ background-color:rgb(216, 209, 209);
      font-weight: bolder; 
  } 
 
@@ -97,17 +102,21 @@ align-items: center;
  
     
 }
-.icons :hover ::after{
+/* .icons :hover ::after{
 
 
     display: block;
     padding: 1em;
     margin: 2em;
     background-color: gray;
-}
+} */
 
 
-.e-sub{
-    font-weight: bolder;
+.e-sub {
+    font-weight: bold;
     font-family: Arial, Helvetica, sans-serif;
+} 
+
+.action-icons > *{
+    margin-left: 1em ;
 }

@@ -9,7 +9,8 @@
     "sentAt": 1551133930594,
     "removed": false,
     "from": "user@appsus.com",
-    "to": "usedddr@appsus.com"    
+    "to": "usedddr@appsus.com" ,
+    "isStared": "false"
   },
   {
     "name":"puki",
@@ -21,7 +22,8 @@
     "sentAt": 887968,
     "removed": false,
     "from": "momo@momo.com",
-    "to": "user@appsus.com" 
+    "to": "user@appsus.com" ,
+    "isStared": "false"
   },
   {
     "name":"shuki",
@@ -33,7 +35,8 @@
     "sentAt": 8555  ,
     "removed": false,
     "from": "momo@momo.com",
-    "to": "user@appsus.com" 
+    "to": "user@appsus.com" ,
+    "isStared": "false"
   },
   {
     "name":"lulu",
@@ -45,7 +48,8 @@
     "sentAt": 8555  ,
     "removed": false,
     "from": "momo@momo.com",
-    "to": "user@appsus.com" 
+    "to": "user@appsus.com" ,
+    "isStared": "false"
   },
   {
     "name":"koko",
@@ -57,7 +61,8 @@
     "sentAt": 8555  ,
     "removed": true,
     "from": "momo@momo.com",
-    "to": "user@appsus.com" 
+    "to": "user@appsus.com" ,
+    "isStared": "false"
   }
 
   

@@ -13,15 +13,15 @@ export default {
             <nav>
      
                 <h1 class="subject"><span class="e-sub">{{ email.subject }}</span></h1>
-                <h3 class="email-from"><span></span>{{ email.from}}</h3><hr>
-                <h1 class="subject"><span>name :</span>{{ email.name }}</h1>
+                <h3 class="email-from"><span></span></h3>
+                <h1 class="subject"><span>{{ email.name }}</span>{{ email.from}}</h1><hr>
                 <!-- <h3 class="email-from"><span>to: :</span>{{ email.to}}</h3> -->
                 <h3 class="email-content">{{ email.body}}</span></h3>
-                <button>save as a note</button>
-                <button>delete</button>
+                <button class="detail-btn">save as a note</button>
+                <!-- <button>delete</button> -->
             <!-- <RouterLink :to="'/email/' + email.prevBookId">Previous email</RouterLink> |
                 <RouterLink :to="'/email/' + email.nextBookId">Next email</RouterLink> -->
-                <RouterLink  to="/email">back</RouterLink>
+                <button class="detail-btn">  <RouterLink  to="/email">back</RouterLink></button>
             </nav>
 
            
@@ -45,7 +45,7 @@ export default {
                     </li>    
                     </ul> -->
 
-            <button @click="closeDetails">Back </button>
+            <!-- <button @click="closeDetails">Back </button> -->
         </section>
 
 <!-- <LongTxt :txt=txt :length="length" /> -->

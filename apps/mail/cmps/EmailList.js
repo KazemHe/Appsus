@@ -3,14 +3,14 @@ import { emailService } from "../services/email.service.js"
 
 
 export default {
-    props: ['emails','emailId'],
+    props: ['emails', 'emailId'],
     template: `
         <section >
             <ul>
-                <li class="email-list" v-for="email in emails"  :key="email.id" @click.stop="moveToDetails(email)">
+                <li @mouseover="isHovering" class="email-list" v-for="email in emails" :key="email.id" @click.stop="moveToDetails(email)">
                     
                     <!-- <RouterLink :to="'/email/'+email.id">Details</RouterLink>  -->
-                    <EmailPreview :email="email" />
+                    <EmailPreview :show="show" :email="email" />
                     <!-- v-if="email.removed !== true -->
                     <!-- <div @click.stop="moveToEdit(email)"><i aria-hidden="true" title="Edit a Message" class="fa fa-pencil"></i></div> -->
                     <!-- <RouterLink :to.stop="'/email/edit/'+email.id"><i aria-hidden="true" title="Edit a Message" class="fa fa-pencil"></i></RouterLink> -->
@@ -23,26 +23,37 @@ export default {
             </ul>
         </section>
     `,
+    data() {
+       return{
+
+           show : false, 
+       }
+
+
+    },
     methods: {
 
         removeEmail(emailId) {
-            console.log('im a father fukcker',emailId)
+            console.log('im a father fukcker', emailId)
             emailService.remove(emailId)
                 .then(() => {
                     const idx = this.emails.findIndex(email => email.id === emailId)
                     this.emails.splice(idx, 1)
                     console.log('after then')
-                    
-            
+
+
                 })
                 .catch(err => {
                     console.log('err')
                     // eventBusService.emit('show-msg', { txt: 'email remove failed', type: 'error' })
                 })
-            },
+        },
 
 
+        isHovering(){
 
+            this.show = !this.show
+        },
 
         //     remove(emailId) {
         //         this.$emit('remove', emailId)
@@ -70,15 +81,15 @@ export default {
     },
     created() {
 
-      
 
-            // console.log('created')
 
-            // const statusReg = new RegExp('inbox', 'i')
-            // // console.log(this.filterBy.subject)
+        // console.log('created')
 
-            // return this.emails.filter(email => statusReg.test(email.status))
-        
+        // const statusReg = new RegExp('inbox', 'i')
+        // // console.log(this.filterBy.subject)
+
+        // return this.emails.filter(email => statusReg.test(email.status))
+
 
 
     },
