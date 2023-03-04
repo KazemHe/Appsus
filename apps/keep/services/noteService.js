@@ -65,24 +65,49 @@ function save(note) {
 }
 
 
-
-function getEmptyNote() {
-
- const note = {
-        id: '',
-        createdAt: Date.now(),
-        type: 'NoteTxt',
-        isPinned: false,
-        style: {
-            backgroundColor: '#00d'
-        },
-        info: {
-            txt: ''
+function getEmptyNote(type) {
+    switch (type) {
+      case 'NoteTxt':
+        return {
+          type: 'NoteTxt',
+          info: { txt: '' }
         }
-        
+      case 'NoteImg':
+        return {
+          type: 'NoteImg',
+          info: { url: '', title: '' }
+        }
+      case 'NoteTodos':
+        return {
+          type: 'NoteTodos',
+          info: { title: '', todos: [{ txt: '', doneAt: null }] }
+        }
+      default:
+        return {
+          type: 'NoteTxt',
+          info: { txt: '' }
+        }
     }
-    return note
 }
+
+
+// function getEmptyNote() {
+
+//  const note = {
+//         id: '',
+//         createdAt: Date.now(),
+//         type: 'NoteTxt',
+//         isPinned: false,
+//         style: {
+//             backgroundColor: ''
+//         },
+//         info: {
+//             txt: ''
+//         }
+        
+//     }
+//     return note
+// }
 
 function _createNotes() {
     let notes = utilService.loadFromStorage(NOTE_KEY)
@@ -95,7 +120,7 @@ function _createNotes() {
                 type: 'NoteTxt',
                 isPinned: true,
                 style: {
-                    backgroundColor: '#00d'
+                    backgroundColor: '#ffffff'
                 },
                 info: {
                     txt: 'Fullstack Me Baby!'
@@ -110,7 +135,7 @@ function _createNotes() {
                     title: 'Bobi and Me'
                 },
                 style: {
-                    backgroundColor: '#00d'
+                    backgroundColor: '#ffffff'
                 }
             },
             {

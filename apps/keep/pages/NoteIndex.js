@@ -6,25 +6,25 @@
     import { eventBus } from '../../../services/event-bus.service.js'
 
     export default {
+        name: 'NoteIndex',
         template: `
+         <NoteFilter @filter="setFilterBy"/>
     <section class="note-index">
     <NoteEdit @save="save" />
-
-    <NoteFilter @filter="setFilterBy"/>
     
                 <NoteList
                     :notes="getPinned"
                     v-if="notes && getPinned "
                     @remove="removeNote"
-                    @changeColor="setChangeColor"
                     @changePinMode="changePinMode" 
+                    @updateNote="updateNote"
                     @duplicate="duplicateNote"
                 />
                 <NoteList
                     :notes="getUnPinned"
                     v-if="notes"
                     @remove="removeNote"
-                    @changeColor="setChangeColor"
+                    @updateNote="updateNote"
                     @changePinMode="changePinMode" 
                     @duplicate="duplicateNote"
                 />
@@ -50,9 +50,13 @@
         },
 
         methods: {
-            setChangeColor(color) {
-                console.log(color);
-
+         
+            updateNote(note){
+                noteService.save(note)
+                .then(savedNote => {
+                    const idx = this.notes.findIndex(n => n.id === savedNote.id) 
+                    this.notes.splice(idx, 1, savedNote)
+            })
             },
 
             removeNote(noteId) {
@@ -68,16 +72,6 @@
                     })
             },
 
-            // duplicateNote(note) {
-            //     console.log(this.notes)
-            //     const copy = { ...note }
-            //     copy.id = makeId()
-            //     this.notes.unshift(copy)
-             
-                
-               
-            // },
-
             duplicateNote(note) {
                 const copy = { ...note }
                 copy.id =''
@@ -92,6 +86,7 @@
             },
 
             save(note) {
+                console.log(note);
                 this.notes.push(note)
             },
 
@@ -104,15 +99,15 @@
 
             getPinned() {
                 const pinnedNotes = this.notes.filter(note => note.isPinned)
-                const titleRegex = new RegExp(this.filterBy.search, 'i')
+                const titleRegex = new RegExp(this.filterBy.title, 'i')
                 const typeRegex = new RegExp(this.filterBy.type, 'i')
-                return pinnedNotes.filter(note => /*titleRegex.test(note.info.title) &&*/ typeRegex.test(note.type))
+                return pinnedNotes.filter(note => titleRegex.test(note.info.title) && typeRegex.test(note.type))
               },
               getUnPinned() {
                 const unpinnedNotes = this.notes.filter(note => !note.isPinned)
                 const titleRegex = new RegExp(this.filterBy.search, 'i')
                 const typeRegex = new RegExp(this.filterBy.type, 'i')
-                return unpinnedNotes.filter(note => /*titleRegex.test(note.info.title) &&*/ typeRegex.test(note.type))
+                return unpinnedNotes.filter(note => titleRegex.test(note.info.title) && typeRegex.test(note.type))
               },
             },
             

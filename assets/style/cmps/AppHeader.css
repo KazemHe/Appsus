@@ -1,4 +1,116 @@
 .app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em;
+  height: 4em;
+  background-color: var(--clr5);
+  color: var(--secondary-clr1);
+}
+
+.app-header h1 {
+  margin-right: 1em;
+  font-size: 1.5rem;
+}
+
+.app-header-nav router-link {
+  font-size: 1.3rem;
+  margin-right: 1em;
+  color: var(--secondary-clr1);
+}
+
+.app-header-nav router-link {
+  font-size: 1.2rem;
+  margin-right: 1em;
+  color: var(--secondary-clr1);
+}
+
+.app-header-dropdown {
+  position: relative;
+}
+
+.app-header-dropdown-menu router-link {
+  display: block;
+  margin-bottom: 0.5em;
+  color: var(--secondary-clr1);
+}
+
+.app-header-dropdown-button {
+  display: flex;
+  align-items: center;
+  padding: 0.5em;
+  border: none;
+  background-color: transparent;
+  color: inherit;
+  font-size: 1.2rem;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.app-header-dropdown-menu {
+  position: absolute;
+  font-size: 20px;
+  top: 100%;
+  right: 0;
+  z-index: 1;
+  display: none;
+  padding: 0.5em;
+  background-color: var(--clr5);
+  box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.2);
+}
+
+.app-header-dropdown-menu.is-open {
+  display: block;
+}
+
+.app-header-dropdown-menu router-link {
+  display: block;
+  margin-bottom: 0.5em;
+  color: var(--secondary-clr1);
+}
+
+@media (max-width: 720px) {
+  .app-header {
+    background-color: var(--clr3);
+    color: var(--secondary-clr2);
+  }
+
+  .app-header h1 {
+    margin-right: 0.5em;
+    font-size: 1.2rem;
+  }
+
+  .app-header-nav router-link {
+    display: none;
+  }
+
+  .app-header-dropdown-button {
+    margin-right: 0;
+    font-size: 1.2rem;
+    padding: 0.5em;
+    margin-left: 0.5em;
+  }
+
+  .app-header-dropdown-menu {
+    position: static;
+    display: block;
+    padding-top: 0.5em;
+    background-color: transparent;
+    box-shadow: none;
+  }
+
+  .app-header-dropdown-menu router-link {
+    margin-bottom: 1em;
+  }
+}
+
+
+
+
+
+
+/* 
+.app-header {
   background-color: var(--clr5);
   color: var(--secondary-clr1);
   padding: 1em;
@@ -9,4 +121,5 @@
     background-color: var(--clr3);
     color: var(--secondary-clr2);
   }
-}
+} */
+
