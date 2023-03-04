@@ -7,7 +7,7 @@ export default {
     emits: ['updateNote'],
     name: 'NotePreview',
     template: `
-
+    <div></div>
         <article class="note-preview" @mouseover="isHovered = true" @mouseleave="isHovered = false">
             <component :is="note.type" :note="note" /> 
             <div class="flex" v-if="isHovered">
