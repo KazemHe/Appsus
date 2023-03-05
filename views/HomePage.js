@@ -8,8 +8,8 @@ export default {
         <section class="home-page">
         <!-- <RouterLink  to="/book">  <img  class="hp-img" src="../assets/style/img/mis books.jpg"></RouterLink> -->
            
-            <RouterLink  to="/email"><img  class="hp-img" src="../assets/style/img/meEmail.png"></RouterLink>
-            <RouterLink  to="/keep"> <img class="hp-img" src="../assets/style/img/keep.png"></RouterLink>
+            <RouterLink  to="/email"><img  class="hp-img" src="assets/img/meEmail.png"></RouterLink>
+            <RouterLink  to="/keep"> <img class="hp-img" src="assets/img/keep.png"></RouterLink>
 
         </section>
     `,
