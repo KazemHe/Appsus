@@ -6,7 +6,7 @@ import EmailEdit from './apps/mail/pages/EmailEdit.js'
 import EmailIndex from './apps/mail/pages/EmailIndex.js'
 import NoteIndex from './apps/keep/pages/NoteIndex.js'
 // import NoteIndex from './apps/keep/pages/NoteIndex.js'
-import BookIndex from '../books/pages/BookIndex.js'
+// import BookIndex from '../books/pages/BookIndex.js'
 
 const { createRouter, createWebHashHistory } = VueRouter
 
@@ -39,10 +39,10 @@ const routerOptions = {
             path: '/email/edit/:emailId?',
             component: EmailEdit
         },
-		{
-            path: '/book',
-            component: BookIndex
-        },
+		// {
+        //     path: '/book',
+        //     component: BookIndex
+        // },
 
 	],
 }
