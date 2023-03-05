@@ -27,11 +27,11 @@
 
 /*email*/
 
-@import '/assets/style/apps/mail/EmailDetails.css';
 @import '/assets/style/apps/mail/EmailList.css';
 @import '/assets/style/apps/mail/Emailedit.css';
 @import '/assets/style/apps/mail/EmailFilter.css';
 @import '/assets/style/apps/mail/emailIndex.css';
+@import '/assets/style/apps/mail/EmailDetails.css';
 
 
 
